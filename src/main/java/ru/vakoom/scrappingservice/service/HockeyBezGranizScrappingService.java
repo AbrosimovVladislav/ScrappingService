@@ -1,21 +1,23 @@
 package ru.vakoom.scrappingservice.service;
 
+import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.model.Product;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
-
-import static ru.vakoom.scrappingservice.service.ScrapperMethod.*;
+import java.util.stream.IntStream;
 
 @Service
+@RequiredArgsConstructor
 public class HockeyBezGranizScrappingService {
 //    https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/
 
@@ -28,17 +30,40 @@ public class HockeyBezGranizScrappingService {
     @Value("/konki/konki-khokkeynye/")
     private String currentCategory;
 
-    private Map<String, List<ScrapperMeta>> productScrapperChain = Map.of(
-            "catalog-item", List.of(
-                    new ScrapperMeta().productParamName("name").scrapperMethod(CLASS_CHAIN).classChain(List.of("ci-link", "ci-title")).additionalParams(null),
-                    new ScrapperMeta().productParamName("brand").scrapperMethod(CLASS_CHAIN).classChain(List.of("ci-link", "ci-brand")).additionalParams(null),
-                    new ScrapperMeta().productParamName("price").scrapperMethod(CLASS_CHAIN).classChain(List.of("ci-prices", "price")).additionalParams(null),
-                    new ScrapperMeta().productParamName("link").scrapperMethod(CLASS_CHAIN_AND_ATTR).classChain(List.of("ci-link")).additionalParams(Map.of("attr", "href")),
-                    new ScrapperMeta().productParamName("imgLink").scrapperMethod(CLASS_CHAIN_WITH_TAG_AND_ATTR).classChain(List.of("ci-link", "ci-thumb")).additionalParams(Map.of("tag", "img", "attr", "src"))
-            )
-    );
+    @Value("?PAGEN_1=")
+    private String paginationParam;
 
-    public List<Product> catalog(){
+    private final ScrapperService scrapperService;
+
+    //Возможно можно упростить за счет вытаскивания сразу конечного класса а не всей цепочки классов
+    private ScrapperMeta2 scrapperMeta2 = new ScrapperMeta2(
+            Pair.of("catalog-item", "class"),
+            List.of(
+                    Pair.of("name", new LinkedHashMap<>() {{
+                        put("ci-link", HtmlChainParam.of("class"));
+                        put("ci-title", HtmlChainParam.of("lastclass"));
+                    }}),
+                    Pair.of("brand", new LinkedHashMap<>() {{
+                        put("ci-link", HtmlChainParam.of("class"));
+                        put("ci-brand", HtmlChainParam.of("lastclass"));
+                    }}),
+                    Pair.of("price", new LinkedHashMap<>() {{
+                        put("ci-prices", HtmlChainParam.of("class"));
+                        put("price", HtmlChainParam.of("lastclass"));
+                    }}),
+                    Pair.of("link", new LinkedHashMap<>() {{
+                        put("ci-link", HtmlChainParam.of("class"));
+                        put("href", HtmlChainParam.of("attr"));
+                    }}),
+                    Pair.of("imgLink", new LinkedHashMap<>() {{
+                        put("ci-link", HtmlChainParam.of("class"));
+                        put("ci-thumb", HtmlChainParam.of("class"));
+                        put("img", HtmlChainParam.of("tag"));
+                        put("src", HtmlChainParam.of("attr"));
+                    }})
+            ));
+
+    public List<Product> catalog() {
 /*
         Вытаскиваем из всего каталога сайта, например https://hockeybezgranic.ru/catalog
         Используем вытаскивание из каждого первоуровнего пункта меню
@@ -46,7 +71,7 @@ public class HockeyBezGranizScrappingService {
         return null;
     }
 
-    public List<Product> menuItem(){
+    public List<Product> menuItem() {
 /*
         Вытаскиваем из первоуровнего пункта меню, например https://hockeybezgranic.ru/catalog/konki/
         Используем вытаскивание из каждой категории
@@ -54,87 +79,100 @@ public class HockeyBezGranizScrappingService {
         return null;
     }
 
-    public List<Product> category(){
+    public List<Product> category() {
         /*
         Вытаскиваем из категории, например https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/
+        https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/?PAGEN_1=2
         Используем постраничное вытаскивание
          */
-        return null;
-    }
 
-    public List<Product> productsPage() {
+        String categoryUrl = basePath + catalogPath + currentCategory;
+
         Document doc = null;
         try {
-            doc = Jsoup.connect(basePath + catalogPath + currentCategory).get();
+            doc = Jsoup.connect(categoryUrl).get();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String startItemClassName = productScrapperChain.keySet().iterator().next();
-        Elements products = doc.getElementsByClass(startItemClassName);
-        return products.stream().map(catalogItem -> createProductFromMeta(catalogItem, productScrapperChain.get(startItemClassName)))
+
+        return IntStream.range(1, defineCountOfPages(categoryUrl))
+                .mapToObj(i -> categoryUrl + paginationParam + i)
+                .map(this::productsPage)
+                .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
 
-    private Product createProductFromMeta(Element startElement, List<ScrapperMeta> metas) {
+    private Integer defineCountOfPages(String categoryUrl) {
+        //ToDo Implement here
+        return 2+1;
+    }
+
+    public List<Product> productsPage(String pageUrl) {
+        Document doc = null;
+        try {
+            doc = Jsoup.connect(pageUrl).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Elements products = scrapperService.getElementsByClass(doc, scrapperMeta2.getRootElement().getFirst());
+        //ToDo подумать как исправить рефреш по правильному
+        refreshScrapperMeta2();
+        List<Product> p = products.stream().map(catalogItem -> {
+            refreshScrapperMeta2();
+            return createProductFromMeta(catalogItem, scrapperMeta2);
+        }).collect(Collectors.toList());
+
+        return p;
+    }
+
+    public Product createProductFromMeta(Element startElement, ScrapperMeta2 meta2) {
         Product product = new Product();
-        for (ScrapperMeta meta : metas) {
-            if (meta.productParamName().equals("name")) {
-                product.name(getValueByMethod(startElement, meta));
-            } else if (meta.productParamName().equals("brand")) {
-                product.brand(getValueByMethod(startElement, meta));
-            } else if (meta.productParamName().equals("price")) {
-                product.price(getValueByMethod(startElement, meta));
-            } else if (meta.productParamName().equals("link")) {
-                product.link(getValueByMethod(startElement, meta));
-            } else if (meta.productParamName().equals("imgLink")) {
-                product.imgLink(getValueByMethod(startElement, meta));
+        for (Pair<String, LinkedHashMap<String, HtmlChainParam>> meta : meta2.elementChain) {
+            if (meta.getFirst().equals("name")) {
+                product.name(scrapperService.getElementByChain(startElement, meta.getSecond()));
+            } else if (meta.getFirst().equals("brand")) {
+                product.brand(scrapperService.getElementByChain(startElement, meta.getSecond()));
+            } else if (meta.getFirst().equals("price")) {
+                product.price(scrapperService.getElementByChain(startElement, meta.getSecond()));
+            } else if (meta.getFirst().equals("link")) {
+                product.link(scrapperService.getElementByChain(startElement, meta.getSecond()));
+            } else if (meta.getFirst().equals("imgLink")) {
+                product.imgLink(scrapperService.getElementByChain(startElement, meta.getSecond()));
             }
         }
         return product;
     }
 
-    private String getValueByMethod(Element startElement, ScrapperMeta meta) {
-        ScrapperMethod method = meta.scrapperMethod();
-        return method.getValue(startElement, meta.classChain(), meta.additionalParams());
+    private void refreshScrapperMeta2() {
+        //Используется для возвращения мапы в исходное состояние.
+        // Так как происходят удаления элементов из списка в процессе составления цепи
+        scrapperMeta2 = new ScrapperMeta2(
+                Pair.of("catalog-item", "class"),
+                List.of(
+                        Pair.of("name", new LinkedHashMap<>() {{
+                            put("ci-link", HtmlChainParam.of("class"));
+                            put("ci-title", HtmlChainParam.of("lastclass"));
+                        }}),
+                        Pair.of("brand", new LinkedHashMap<>() {{
+                            put("ci-link", HtmlChainParam.of("class"));
+                            put("ci-brand", HtmlChainParam.of("lastclass"));
+                        }}),
+                        Pair.of("price", new LinkedHashMap<>() {{
+                            put("ci-prices", HtmlChainParam.of("class"));
+                            put("price", HtmlChainParam.of("lastclass"));
+                        }}),
+                        Pair.of("link", new LinkedHashMap<>() {{
+                            put("ci-link", HtmlChainParam.of("class"));
+                            put("href", HtmlChainParam.of("attr"));
+                        }}),
+                        Pair.of("imgLink", new LinkedHashMap<>() {{
+                            put("ci-link", HtmlChainParam.of("class"));
+                            put("ci-thumb", HtmlChainParam.of("class"));
+                            put("img", HtmlChainParam.of("tag"));
+                            put("src", HtmlChainParam.of("attr"));
+                        }})
+                ));
     }
-
-/*    public List<Product> simplePageScrapper() {
-        Document doc = null;
-        try {
-            doc = Jsoup.connect(basePath + catalogPath + currentCategory).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Elements products = doc.getElementsByClass("catalog-item");
-        return products.stream().map(catalogItem ->
-                new Product()
-                        .name(getValueByClass(catalogItem, List.of("ci-link", "ci-title")))
-                        .brand(getValueByClass(catalogItem, List.of("ci-link", "ci-brand")))
-                        .price(getValueByClass(catalogItem, List.of("ci-prices", "price")))
-                        .link(getValueByClassAttr(catalogItem, List.of("ci-link"), "href"))
-                        .imgLink(getValueByClassTagAttr(catalogItem, List.of("ci-link", "ci-thumb"), "img", "src")))
-                .collect(Collectors.toList());
-    }*/
-
-/*    private String getValueByClass(Element startElement, List<String> classChain) {
-        for (String className : classChain) {
-            startElement = startElement.getElementsByClass(className).get(0);
-        }
-        return startElement.text();
-    }
-
-    private String getValueByClassAttr(Element startElement, List<String> classChain, String attr) {
-        for (String className : classChain) {
-            startElement = startElement.getElementsByClass(className).get(0);
-        }
-        return startElement.attr(attr);
-    }
-
-    private String getValueByClassTagAttr(Element startElement, List<String> classChain, String tag, String attr) {
-        for (String className : classChain) {
-            startElement = startElement.getElementsByClass(className).get(0);
-        }
-        return startElement.getElementsByTag(tag).get(0).attr(attr);
-    }*/
 
 }

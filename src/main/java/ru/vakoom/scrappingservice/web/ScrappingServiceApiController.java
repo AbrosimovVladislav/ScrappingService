@@ -15,8 +15,8 @@ public class ScrappingServiceApiController {
     private final HockeyBezGranizScrappingService scrapper;
 
     @GetMapping(path = "/productScrapping")
-    public List<Product> get(){
-        var a = scrapper.productsPage();
+    public List<Product> get() {
+        var a = scrapper.category();
         return a;
     }
 
