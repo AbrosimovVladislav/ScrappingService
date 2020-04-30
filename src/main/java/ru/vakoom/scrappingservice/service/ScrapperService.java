@@ -14,11 +14,12 @@ import java.util.stream.Collectors;
 public class ScrapperService {
 
     public String getElementByChain(Element startElement, LinkedHashMap<String, HtmlChainParam> paramChain) {
+        var paramChainWithoutLastElement = new LinkedHashMap<>(paramChain);
         /*Получение последнего элемента и удаление его из мапы*/
-        Map.Entry<String, HtmlChainParam> lastElement = (Map.Entry) paramChain.entrySet().toArray()[paramChain.keySet().size() - 1];
-        paramChain.remove(lastElement.getKey());
+        Map.Entry<String, HtmlChainParam> lastElement = (Map.Entry) paramChainWithoutLastElement.entrySet().toArray()[paramChainWithoutLastElement.keySet().size() - 1];
+        paramChainWithoutLastElement.remove(lastElement.getKey());
 
-        for (var entry : paramChain.entrySet()) {
+        for (var entry : paramChainWithoutLastElement.entrySet()) {
             String paramName = entry.getKey();
             HtmlChainParam htmlChainParam = entry.getValue();
             startElement = (Element) htmlChainParam.getValueByParam(startElement, paramName);

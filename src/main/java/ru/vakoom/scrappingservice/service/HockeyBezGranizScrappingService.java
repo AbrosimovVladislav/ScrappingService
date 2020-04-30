@@ -121,9 +121,9 @@ public class HockeyBezGranizScrappingService {
         Integer pages = defineCountOfPages(fullCategoryDoc);
 
         log.info(
-            "Category{} has {} pages",
-            catalogWithMenuItemWithCategoryPath.substring(catalogWithMenuItemWithCategoryPath.lastIndexOf('/') + 1),
-            pages - 1
+                "Category{} has {} pages",
+                catalogWithMenuItemWithCategoryPath.substring(catalogWithMenuItemWithCategoryPath.lastIndexOf('/') + 1),
+                pages - 1
         );
         return IntStream.range(1, pages)
                 .mapToObj(i -> categoryUrl + paginationParam + i)
@@ -156,11 +156,8 @@ public class HockeyBezGranizScrappingService {
 
         Elements products = scrapperService.getElementsByClass(doc, scrapperMeta2.getRootElement().getFirst());
         //ToDo подумать как исправить рефреш по правильному
-        refreshScrapperMeta2();
-        List<Product> p = products.stream().map(catalogItem -> {
-            refreshScrapperMeta2();
-            return createProductFromMeta(catalogItem, scrapperMeta2);
-        }).collect(Collectors.toList());
+        List<Product> p = products.stream().map(catalogItem -> createProductFromMeta(catalogItem, scrapperMeta2))
+                .collect(Collectors.toList());
 
         return p;
     }
@@ -188,37 +185,6 @@ public class HockeyBezGranizScrappingService {
         }
         log.info(product.toString());
         return product;
-    }
-
-    private void refreshScrapperMeta2() {
-        //Используется для возвращения мапы в исходное состояние.
-        // Так как происходят удаления элементов из списка в процессе составления цепи
-        scrapperMeta2 = new ScrapperMeta2(
-                Pair.of("catalog-item", "class"),
-                List.of(
-                        Pair.of("name", new LinkedHashMap<>() {{
-                            put("ci-link", HtmlChainParam.of("class"));
-                            put("ci-title", HtmlChainParam.of("lastclass"));
-                        }}),
-                        Pair.of("brand", new LinkedHashMap<>() {{
-                            put("ci-link", HtmlChainParam.of("class"));
-                            put("ci-brand", HtmlChainParam.of("lastclass"));
-                        }}),
-                        Pair.of("price", new LinkedHashMap<>() {{
-                            put("ci-prices", HtmlChainParam.of("class"));
-                            put("price", HtmlChainParam.of("lastclass"));
-                        }}),
-                        Pair.of("link", new LinkedHashMap<>() {{
-                            put("ci-link", HtmlChainParam.of("class"));
-                            put("href", HtmlChainParam.of("attr"));
-                        }}),
-                        Pair.of("imgLink", new LinkedHashMap<>() {{
-                            put("ci-link", HtmlChainParam.of("class"));
-                            put("ci-thumb", HtmlChainParam.of("class"));
-                            put("img", HtmlChainParam.of("tag"));
-                            put("src", HtmlChainParam.of("attr"));
-                        }})
-                ));
     }
 
 }
