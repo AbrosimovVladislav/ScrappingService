@@ -163,16 +163,22 @@ public class HockeyBezGranizScrappingService {
     public Product createProductFromMeta(Element startElement, ScrapperMeta2 meta2) {
         Product product = new Product();
         for (Pair<String, LinkedHashMap<String, HtmlChainParam>> meta : meta2.elementChain) {
-            if (meta.getFirst().equals("name")) {
-                product.name(scrapperService.getElementByChain(startElement, meta.getSecond()));
-            } else if (meta.getFirst().equals("brand")) {
-                product.brand(scrapperService.getElementByChain(startElement, meta.getSecond()));
-            } else if (meta.getFirst().equals("price")) {
-                product.price(scrapperService.getElementByChain(startElement, meta.getSecond()));
-            } else if (meta.getFirst().equals("link")) {
-                product.link(scrapperService.getElementByChain(startElement, meta.getSecond()));
-            } else if (meta.getFirst().equals("imgLink")) {
-                product.imgLink(scrapperService.getElementByChain(startElement, meta.getSecond()));
+            switch (meta.getFirst()) {
+                case "name":
+                    product.name(scrapperService.getElementByChain(startElement, meta.getSecond()));
+                    break;
+                case "brand":
+                    product.brand(scrapperService.getElementByChain(startElement, meta.getSecond()));
+                    break;
+                case "price":
+                    product.price(scrapperService.getElementByChain(startElement, meta.getSecond()));
+                    break;
+                case "link":
+                    product.link(scrapperService.getElementByChain(startElement, meta.getSecond()));
+                    break;
+                case "imgLink":
+                    product.imgLink(scrapperService.getElementByChain(startElement, meta.getSecond()));
+                    break;
             }
         }
         log.info(product.toString());
