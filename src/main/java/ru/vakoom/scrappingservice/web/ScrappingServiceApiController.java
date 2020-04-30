@@ -16,7 +16,7 @@ public class ScrappingServiceApiController {
 
     @GetMapping("/go")
     public List<Product> get() {
-        var a = scrapper.catalog();
+        var a = scrapper.fullCatalog();
         return a;
     }
 

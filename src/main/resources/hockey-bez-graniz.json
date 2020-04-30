@@ -1,0 +1,84 @@
+{
+  "basePath": "https://hockeybezgranic.ru",
+  "catalogPath": "/catalog",
+  "paginatorParam": "?PAGEN_1=",
+  "rootElement": {
+    "name": "catalog-item",
+    "htmlObjectType": "class"
+  },
+  "elementChainList": [
+    {
+      "productField": "name",
+      "htmlLocationChain": [
+        {
+          "name": "ci-link",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "ci-title",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "brand",
+      "htmlLocationChain": [
+        {
+          "name": "ci-link",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "ci-brand",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "price",
+      "htmlLocationChain": [
+        {
+          "name": "ci-prices",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "price",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "link",
+      "htmlLocationChain": [
+        {
+          "name": "ci-link",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "href",
+          "htmlObjectType": "attr"
+        }
+      ]
+    },
+    {
+      "productField": "imgLink",
+      "htmlLocationChain": [
+        {
+          "name": "ci-link",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "ci-thumb",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "img",
+          "htmlObjectType": "tag"
+        },
+        {
+          "name": "src",
+          "htmlObjectType": "attr"
+        }
+      ]
+    }
+  ]
+}

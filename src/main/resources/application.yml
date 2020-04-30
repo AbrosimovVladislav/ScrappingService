@@ -15,7 +15,7 @@ spring:
     show-sql: true
     database: postgresql
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect

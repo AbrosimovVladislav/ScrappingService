@@ -20,6 +20,6 @@ public class ScrapperMeta2 {
      * List of :
      * Pair -> entityParamName <-> chain of htmlParams in Map format
      */
-    List<Pair<String, LinkedHashMap<String, HtmlChainParam>>> elementChain;
+    List<Pair<String, LinkedHashMap<String, HtmlObjectType>>> elementChain;
 
 }

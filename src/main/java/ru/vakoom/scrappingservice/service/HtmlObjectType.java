@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Element;
 
 @Slf4j
-public enum HtmlChainParam {
+public enum HtmlObjectType {
 
     CLASS {
         @Override
@@ -37,7 +37,7 @@ public enum HtmlChainParam {
         }
     };
 
-    public static HtmlChainParam of(String value) {
+    public static HtmlObjectType of(String value) {
         if (value.equalsIgnoreCase(CLASS.toString())) {
             return CLASS;
         } else if (value.equalsIgnoreCase(LASTCLASS.toString())) {

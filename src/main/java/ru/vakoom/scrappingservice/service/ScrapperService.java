@@ -5,27 +5,27 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 public class ScrapperService {
 
-    public String getElementByChain(Element startElement, LinkedHashMap<String, HtmlChainParam> paramChain) {
-        var paramChainWithoutLastElement = new LinkedHashMap<>(paramChain);
-        /*Получение последнего элемента и удаление его из мапы*/
-        Map.Entry<String, HtmlChainParam> lastElement = (Map.Entry) paramChainWithoutLastElement.entrySet().toArray()[paramChainWithoutLastElement.keySet().size() - 1];
-        paramChainWithoutLastElement.remove(lastElement.getKey());
+    public String getElementByChain(Element startElement, List<ScrapperMeta.HtmlLocation> paramChain) {
+        var paramChainWithoutLastElement = new ArrayList<>(paramChain);
+        ScrapperMeta.HtmlLocation lastElement = paramChainWithoutLastElement.get(paramChainWithoutLastElement.size() - 1);
+        paramChainWithoutLastElement.remove(lastElement);
 
-        for (var entry : paramChainWithoutLastElement.entrySet()) {
-            String paramName = entry.getKey();
-            HtmlChainParam htmlChainParam = entry.getValue();
-            startElement = (Element) htmlChainParam.getValueByParam(startElement, paramName);
+        for (ScrapperMeta.HtmlLocation htmlLocation : paramChainWithoutLastElement) {
+            String paramName = htmlLocation.getName();
+            HtmlObjectType htmlObjectType = HtmlObjectType.of(htmlLocation.getHtmlObjectType());
+            startElement = (Element) htmlObjectType.getValueByParam(startElement, paramName);
         }
 
-        return (String) lastElement.getValue().getValueByParam(startElement, lastElement.getKey());
+        HtmlObjectType lastElementHtmlObjectType = HtmlObjectType.of(lastElement.getHtmlObjectType());
+
+        return (String) lastElementHtmlObjectType.getValueByParam(startElement, lastElement.getName());
     }
 
     public Elements getElementsByClass(Document doc, String className) {
@@ -38,6 +38,5 @@ public class ScrapperService {
                 .map(element -> element.attr("href"))
                 .collect(Collectors.toList());
     }
-
 
 }
