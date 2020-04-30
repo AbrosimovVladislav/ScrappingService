@@ -75,7 +75,7 @@ public class HockeyBezGranizScrappingService {
         return catalogUrls.stream()
                 .map(this::menuItem)
                 .flatMap(List::stream)
-                .peek(hockeyRepository::save)
+                .peek(hockeyRepository::saveOrUpdate)
                 .collect(Collectors.toList());
     }
 
@@ -119,7 +119,12 @@ public class HockeyBezGranizScrappingService {
         }
 
         Integer pages = defineCountOfPages(fullCategoryDoc);
-        log.info(catalogWithMenuItemWithCategoryPath + ": " + (pages - 1));
+
+        log.info(
+            "Category{} has {} pages",
+            catalogWithMenuItemWithCategoryPath.substring(catalogWithMenuItemWithCategoryPath.lastIndexOf('/') + 1),
+            pages - 1
+        );
         return IntStream.range(1, pages)
                 .mapToObj(i -> categoryUrl + paginationParam + i)
                 .map(this::productsPage)
@@ -128,7 +133,6 @@ public class HockeyBezGranizScrappingService {
     }
 
     private Integer defineCountOfPages(Document fullCategoryDoc) {
-        //ToDo Implement here
         int lastPageNumber = 1;
         Elements pageNav = fullCategoryDoc.getElementsByClass("page-nav");
         if (pageNav.isEmpty()) return ++lastPageNumber;
@@ -142,11 +146,12 @@ public class HockeyBezGranizScrappingService {
     }
 
     public List<Product> productsPage(String pageUrl) {
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect(pageUrl).get();
         } catch (IOException e) {
             e.printStackTrace();
+            return Collections.emptyList();
         }
 
         Elements products = scrapperService.getElementsByClass(doc, scrapperMeta2.getRootElement().getFirst());
