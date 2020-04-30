@@ -1,6 +1,7 @@
 package ru.vakoom.scrappingservice.service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,13 +10,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.model.Product;
+import ru.vakoom.scrappingservice.repository.HockeyRepository;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class HockeyBezGranizScrappingService {
@@ -27,13 +31,11 @@ public class HockeyBezGranizScrappingService {
     @Value("/catalog")
     private String catalogPath;
 
-    @Value("/konki/konki-khokkeynye/")
-    private String currentCategory;
-
     @Value("?PAGEN_1=")
     private String paginationParam;
 
     private final ScrapperService scrapperService;
+    private final HockeyRepository hockeyRepository;
 
     //Возможно можно упростить за счет вытаскивания сразу конечного класса а не всей цепочки классов
     private ScrapperMeta2 scrapperMeta2 = new ScrapperMeta2(
@@ -68,43 +70,75 @@ public class HockeyBezGranizScrappingService {
         Вытаскиваем из всего каталога сайта, например https://hockeybezgranic.ru/catalog
         Используем вытаскивание из каждого первоуровнего пункта меню
          */
-        return null;
+        List<String> catalogUrls = List.of("/konki", "/zashchita-igroka", "/klyushki", "/odezhda", "/vratar", "/sumki", "/aksessuary", "/trenazhery", "/raznoe");
+
+        return catalogUrls.stream()
+                .map(this::menuItem)
+                .flatMap(List::stream)
+                .peek(hockeyRepository::save)
+                .collect(Collectors.toList());
     }
 
-    public List<Product> menuItem() {
+    public List<Product> menuItem(String menuItemUrl) {
 /*
         Вытаскиваем из первоуровнего пункта меню, например https://hockeybezgranic.ru/catalog/konki/
         Используем вытаскивание из каждой категории
          */
-        return null;
+
+        String menuItemFullPath = basePath + catalogPath + menuItemUrl;
+        Document fullMenuItemDOc = null;
+        try {
+            fullMenuItemDOc = Jsoup.connect(menuItemFullPath).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+
+        return scrapperService.getElementValueByClassAndAttribute(fullMenuItemDOc, "category-more")
+                .stream()
+                .map(catalogWithMenuItemWithCategoryPath -> category(basePath, catalogWithMenuItemWithCategoryPath))
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
     }
 
-    public List<Product> category() {
+    public List<Product> category(String basePath, String catalogWithMenuItemWithCategoryPath) {
         /*
         Вытаскиваем из категории, например https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/
         https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/?PAGEN_1=2
         Используем постраничное вытаскивание
          */
 
-        String categoryUrl = basePath + catalogPath + currentCategory;
+        String categoryUrl = basePath + catalogWithMenuItemWithCategoryPath;
 
-        Document doc = null;
+        Document fullCategoryDoc;
         try {
-            doc = Jsoup.connect(categoryUrl).get();
+            fullCategoryDoc = Jsoup.connect(categoryUrl).get();
         } catch (IOException e) {
             e.printStackTrace();
+            return Collections.emptyList();
         }
 
-        return IntStream.range(1, defineCountOfPages(categoryUrl))
+        Integer pages = defineCountOfPages(fullCategoryDoc);
+        log.info(catalogWithMenuItemWithCategoryPath + ": " + (pages - 1));
+        return IntStream.range(1, pages)
                 .mapToObj(i -> categoryUrl + paginationParam + i)
                 .map(this::productsPage)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
 
-    private Integer defineCountOfPages(String categoryUrl) {
+    private Integer defineCountOfPages(Document fullCategoryDoc) {
         //ToDo Implement here
-        return 2+1;
+        int lastPageNumber = 1;
+        Elements pageNav = fullCategoryDoc.getElementsByClass("page-nav");
+        if (pageNav.isEmpty()) return ++lastPageNumber;
+        for (Element hrefE : pageNav.get(0).getElementsByAttribute("href")) {
+            int currentPageNumber = Integer.parseInt(hrefE.text());
+            if (lastPageNumber < currentPageNumber) {
+                lastPageNumber = currentPageNumber;
+            }
+        }
+        return ++lastPageNumber;
     }
 
     public List<Product> productsPage(String pageUrl) {
@@ -141,6 +175,7 @@ public class HockeyBezGranizScrappingService {
                 product.imgLink(scrapperService.getElementByChain(startElement, meta.getSecond()));
             }
         }
+        log.info(product.toString());
         return product;
     }
 

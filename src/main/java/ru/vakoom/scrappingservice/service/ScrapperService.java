@@ -6,7 +6,9 @@ import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class ScrapperService {
@@ -25,8 +27,15 @@ public class ScrapperService {
         return (String) lastElement.getValue().getValueByParam(startElement, lastElement.getKey());
     }
 
-    public Elements getElementsByClass(Document doc, String className){
+    public Elements getElementsByClass(Document doc, String className) {
         return doc.getElementsByClass(className);
+    }
+
+    //ToDo убрать, переделать через общий алгортим (LinkedHashMap)
+    public List<String> getElementValueByClassAndAttribute(Document doc, String className) {
+        return doc.getElementsByClass(className).stream()
+                .map(element -> element.attr("href"))
+                .collect(Collectors.toList());
     }
 
 

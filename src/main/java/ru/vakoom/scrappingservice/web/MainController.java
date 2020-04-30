@@ -2,6 +2,7 @@ package ru.vakoom.scrappingservice.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import ru.vakoom.scrappingservice.model.Product;
 
 @Controller
 public class MainController {
