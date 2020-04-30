@@ -1,6 +1,5 @@
 {
   "basePath": "https://hockeybezgranic.ru",
-  "catalogPath": "/catalog",
   "paginatorParam": "?PAGEN_1=",
   "rootElement": {
     "name": "catalog-item",

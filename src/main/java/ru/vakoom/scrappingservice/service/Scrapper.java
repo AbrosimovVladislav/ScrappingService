@@ -1,7 +1,5 @@
 package ru.vakoom.scrappingservice.service;
 
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,6 +13,7 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @Slf4j
 public abstract class Scrapper {
@@ -25,14 +24,33 @@ public abstract class Scrapper {
 
     @PostConstruct
     public void init() {
-        scrapperMeta = ScrapperMeta.fromJson("src/main/resources/hockey-bez-graniz.json");
+        scrapperMeta = ScrapperMeta.fromJson("src/main/resources/webshopconfig/hockey-bez-graniz.json");
     }
 
     public abstract List<Product> fullCatalog();
 
     public abstract List<Product> menuItem(String menuItemUrl);
 
-    public abstract List<Product> category(String basePath, String catalogWithMenuItemWithCategoryPath);
+    public List<Product> category(String categoryUrl) {
+        Document categoryDoc;
+        try {
+            categoryDoc = Jsoup.connect(categoryUrl).get();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return Collections.emptyList();
+        }
+
+        Integer pages = defineCountOfPages(categoryDoc);
+
+        String substringForLog = categoryUrl.substring(0, categoryUrl.length() - 1);
+        log.info("Category {} has {} pages", substringForLog.substring(substringForLog.lastIndexOf("/") + 1), pages - 1);
+
+        return IntStream.range(1, pages)
+                .mapToObj(i -> categoryUrl + scrapperMeta.getPaginatorParam() + i)
+                .map(this::productsPage)
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
 
     public abstract Integer defineCountOfPages(Document fullCategoryDoc);
 
