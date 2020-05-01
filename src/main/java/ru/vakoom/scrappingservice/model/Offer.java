@@ -22,6 +22,4 @@ public class Offer {
     private String category;
     private String shopName;
     private String link;
-    private String imgLink;
-
 }

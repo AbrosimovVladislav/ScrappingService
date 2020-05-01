@@ -12,7 +12,7 @@ spring:
     show-sql: true
     database: postgresql
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect

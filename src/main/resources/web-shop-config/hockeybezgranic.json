@@ -1,4 +1,5 @@
 {
+  "basePath": "https://hockeybezgranic.ru",
   "shopName": "HOCKEYBEZGRANIC",
   "paginatorParam": "?PAGEN_1=",
   "menuItems": [
@@ -132,27 +133,6 @@
         },
         {
           "name": "href",
-          "htmlObjectType": "attr"
-        }
-      ]
-    },
-    {
-      "productField": "imgLink",
-      "htmlLocationChain": [
-        {
-          "name": "ci-link",
-          "htmlObjectType": "class"
-        },
-        {
-          "name": "ci-thumb",
-          "htmlObjectType": "class"
-        },
-        {
-          "name": "img",
-          "htmlObjectType": "tag"
-        },
-        {
-          "name": "src",
           "htmlObjectType": "attr"
         }
       ]

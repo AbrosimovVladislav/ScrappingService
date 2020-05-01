@@ -68,7 +68,7 @@ public abstract class Scrapper {
 
         return IntStream.range(1, pages)
                 .mapToObj(i -> categoryUrl + scrapperMeta.getPaginatorParam() + i)
-                .map(url -> productsPage(url,categoryName))
+                .map(url -> productsPage(url, categoryName))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }
@@ -113,10 +113,7 @@ public abstract class Scrapper {
                     offer.shopName(scrapperMeta.getShopName());
                     break;
                 case "link":
-                    offer.link(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
-                    break;
-                case "imgLink":
-                    offer.imgLink(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.link(scrapperMeta.getBasePath() + scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
             }
         }
