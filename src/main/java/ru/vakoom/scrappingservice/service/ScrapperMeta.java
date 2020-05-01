@@ -17,6 +17,8 @@ public class ScrapperMeta {
     private String basePath;
     private String paginatorParam;
 
+    private List<String> menuItems;
+
     /**
      * Корневой элемент представляющий собой сужение html документа
      * В данном html локе находится вся интересующая нас информация по продуктам

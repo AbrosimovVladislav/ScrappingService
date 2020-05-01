@@ -2,6 +2,17 @@
   "shopName": "HOCKEYBEZGRANIC",
   "basePath": "https://hockeybezgranic.ru",
   "paginatorParam": "?PAGEN_1=",
+  "menuItems": [
+    "/catalog/konki",
+    "/catalog/zashchita-igroka",
+    "/catalog/klyushki",
+    "/catalog/odezhda",
+    "/catalog/vratar",
+    "/catalog/sumki",
+    "/catalog/aksessuary",
+    "/catalog/trenazhery",
+    "/catalog/raznoe"
+  ],
   "rootElement": {
     "name": "catalog-item",
     "htmlObjectType": "class"

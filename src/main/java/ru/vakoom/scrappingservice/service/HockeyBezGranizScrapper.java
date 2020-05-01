@@ -11,6 +11,7 @@ import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.repository.HockeyRepository;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,8 @@ public class HockeyBezGranizScrapper extends Scrapper {
 
     @Override
     public List<Offer> fullCatalog() { //TODO move to scrapper
-        List<String> catalogUrls = List.of(/*"/catalog/konki", "/catalog/zashchita-igroka", "/catalog/klyushki", "/catalog/odezhda", "/catalog/vratar", "/catalog/sumki", "/catalog/aksessuary", "/catalog/trenazhery",*/ "/catalog/raznoe"/*, "/detskaya-ekipirovka/"*/);
+        /*, "/detskaya-ekipirovka/"*/
+        List<String> catalogUrls = new ArrayList<>(scrapperMeta.getMenuItems());
         return catalogUrls.stream()
                 .map(this::menuItem)
                 .flatMap(List::stream)
