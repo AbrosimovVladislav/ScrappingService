@@ -7,8 +7,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.vakoom.scrappingservice.model.Offer;
+import ru.vakoom.scrappingservice.repository.OfferRepository;
+import ru.vakoom.scrappingservice.repository.ScrappingDateLogRepository;
 
-import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
@@ -22,10 +23,12 @@ public abstract class Scrapper {
     protected ScrapperService scrapperService;
     protected ScrapperMeta scrapperMeta;
 
-/*    @PostConstruct
-    public void init() {
-        scrapperMeta = ScrapperMeta.fromJson("src/main/resources/webshopconfig/hockey-bez-graniz.json");
-    }*/
+    @Autowired
+    protected OfferRepository offerRepository;
+    @Autowired
+    protected ScrappingDateLogRepository scrappingDateLogRepository;
+
+    public abstract void init();
 
     public abstract List<Offer> fullCatalog();
 

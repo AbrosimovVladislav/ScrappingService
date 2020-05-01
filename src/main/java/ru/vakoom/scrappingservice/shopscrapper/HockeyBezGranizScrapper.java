@@ -5,12 +5,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.model.ScrappingDateLog;
-import ru.vakoom.scrappingservice.repository.OfferRepository;
-import ru.vakoom.scrappingservice.repository.ScrappingDateLogRepository;
 import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 
@@ -29,14 +26,10 @@ public class HockeyBezGranizScrapper extends Scrapper {
 
     //TODO ДОКОСТЫЛИТЬ С ДЕТСКИМИ /*, "/detskaya-ekipirovka/"*/
 
-    @Autowired
-    private OfferRepository offerRepository;
-    @Autowired
-    private ScrappingDateLogRepository scrappingDateLogRepository;
-
+    @Override
     @PostConstruct
     public void init() {
-        scrapperMeta = ScrapperMeta.fromJson("src/main/resources/webshopconfig/hockey-bez-graniz.json");
+        scrapperMeta = ScrapperMeta.fromJson("src/main/resources/web-shop-config/hockeybezgranic.json");
     }
 
     @Override
