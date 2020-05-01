@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.shopscrapper.HockeyBezGranizScrapper;
+import ru.vakoom.scrappingservice.shopscrapper.SportDepoScrapper;
 
 import java.util.List;
 
@@ -12,11 +13,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ScrappingServiceApiController {
 
-    private final HockeyBezGranizScrapper scrapper;
+    private final HockeyBezGranizScrapper hockeyBezGranizScrapper;
+    private final SportDepoScrapper sportDepoScrapper;
 
     @GetMapping("/go")
     public List<Offer> get() {
-        var a = scrapper.fullCatalog();
+        var a = hockeyBezGranizScrapper.fullCatalog();
+//        var a = sportDepoScrapper.fullCatalog();
         return a;
     }
 

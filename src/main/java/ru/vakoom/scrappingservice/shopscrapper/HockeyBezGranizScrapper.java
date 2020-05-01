@@ -7,15 +7,12 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.model.Offer;
-import ru.vakoom.scrappingservice.model.ScrappingDateLog;
 import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,32 +20,10 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class HockeyBezGranizScrapper extends Scrapper {
-
-    //TODO ДОКОСТЫЛИТЬ С ДЕТСКИМИ /*, "/detskaya-ekipirovka/"*/
-
     @Override
     @PostConstruct
     public void init() {
         scrapperMeta = ScrapperMeta.fromJson("src/main/resources/web-shop-config/hockeybezgranic.json");
-    }
-
-    @Override
-    public List<Offer> fullCatalog() { //TODO move to scrapper
-        List<String> catalogUrls = new ArrayList<>(scrapperMeta.getMenuItems());
-        //ToDo подумать как убрать в аннотации
-        ScrappingDateLog scrappingDateLog = new ScrappingDateLog();
-        scrappingDateLog.setDateOfScrap(new Date());
-        long start = System.currentTimeMillis();
-        List<Offer> offers = catalogUrls.stream()
-                .map(this::menuItem)
-                .flatMap(List::stream)
-                .peek(offerRepository::saveOrUpdate)
-                .collect(Collectors.toList());
-        long finish = System.currentTimeMillis();
-        scrappingDateLog.setTimeOfScrapping(finish - start);
-        scrappingDateLog.setShopName(scrapperMeta.getShopName());
-        scrappingDateLogRepository.save(scrappingDateLog);
-        return offers;
     }
 
     @Override

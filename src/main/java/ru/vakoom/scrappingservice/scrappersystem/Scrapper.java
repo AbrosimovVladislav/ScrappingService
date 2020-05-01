@@ -7,11 +7,14 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.vakoom.scrappingservice.model.Offer;
+import ru.vakoom.scrappingservice.model.ScrappingDateLog;
 import ru.vakoom.scrappingservice.repository.OfferRepository;
 import ru.vakoom.scrappingservice.repository.ScrappingDateLogRepository;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -30,7 +33,23 @@ public abstract class Scrapper {
 
     public abstract void init();
 
-    public abstract List<Offer> fullCatalog();
+    public List<Offer> fullCatalog() {
+        List<String> catalogUrls = new ArrayList<>(scrapperMeta.getMenuItems());
+        //ToDo подумать как убрать в аннотации
+        ScrappingDateLog scrappingDateLog = new ScrappingDateLog();
+        scrappingDateLog.setDateOfScrap(new Date());
+        long start = System.currentTimeMillis();
+        List<Offer> offers = catalogUrls.stream()
+                .map(this::menuItem)
+                .flatMap(List::stream)
+                .peek(offerRepository::saveOrUpdate)
+                .collect(Collectors.toList());
+        long finish = System.currentTimeMillis();
+        scrappingDateLog.setTimeOfScrapping(finish - start);
+        scrappingDateLog.setShopName(scrapperMeta.getShopName());
+        scrappingDateLogRepository.save(scrappingDateLog);
+        return offers;
+    }
 
     public abstract List<Offer> menuItem(String menuItemUrl);
 
