@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.service;
+package ru.vakoom.scrappingservice.shopscrapper;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
@@ -8,7 +8,8 @@ import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.model.Offer;
-import ru.vakoom.scrappingservice.repository.HockeyRepository;
+import ru.vakoom.scrappingservice.repository.OfferRepository;
+import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,19 +22,18 @@ import java.util.stream.Collectors;
 @Service
 public class HockeyBezGranizScrapper extends Scrapper {
 
-    //TODO ДОКОСТЫЛИТЬ С ДЕТСКИМИ
+    //TODO ДОКОСТЫЛИТЬ С ДЕТСКИМИ /*, "/detskaya-ekipirovka/"*/
 
     @Autowired
-    private HockeyRepository hockeyRepository;
+    private OfferRepository offerRepository;
 
     @Override
     public List<Offer> fullCatalog() { //TODO move to scrapper
-        /*, "/detskaya-ekipirovka/"*/
         List<String> catalogUrls = new ArrayList<>(scrapperMeta.getMenuItems());
         return catalogUrls.stream()
                 .map(this::menuItem)
                 .flatMap(List::stream)
-                .peek(hockeyRepository::saveOrUpdate)
+                .peek(offerRepository::saveOrUpdate)
                 .collect(Collectors.toList());
     }
 

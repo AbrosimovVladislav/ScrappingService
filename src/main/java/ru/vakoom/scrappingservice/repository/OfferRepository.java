@@ -7,7 +7,7 @@ import ru.vakoom.scrappingservice.model.Offer;
 import java.util.Optional;
 
 @Repository
-public interface HockeyRepository extends CrudRepository<Offer, Long> {
+public interface OfferRepository extends CrudRepository<Offer, Long> {
 
     Optional<Offer> findByNameAndBrand(String name, String brand);
 

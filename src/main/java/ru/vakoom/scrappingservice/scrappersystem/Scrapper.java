@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.service;
+package ru.vakoom.scrappingservice.scrappersystem;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;

@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.service;
+package ru.vakoom.scrappingservice.scrappersystem;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;

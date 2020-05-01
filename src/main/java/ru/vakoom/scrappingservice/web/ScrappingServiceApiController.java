@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.vakoom.scrappingservice.model.Offer;
-import ru.vakoom.scrappingservice.service.HockeyBezGranizScrapper;
+import ru.vakoom.scrappingservice.shopscrapper.HockeyBezGranizScrapper;
 
 import java.util.List;
 
