@@ -22,10 +22,10 @@ public abstract class Scrapper {
     protected ScrapperService scrapperService;
     protected ScrapperMeta scrapperMeta;
 
-    @PostConstruct
+/*    @PostConstruct
     public void init() {
         scrapperMeta = ScrapperMeta.fromJson("src/main/resources/webshopconfig/hockey-bez-graniz.json");
-    }
+    }*/
 
     public abstract List<Offer> fullCatalog();
 

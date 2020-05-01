@@ -11,8 +11,9 @@ import javax.persistence.Id;
 @Accessors(fluent = true)
 @Entity
 public class Offer {
-    @Id @GeneratedValue private Long id;
-
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
     private String brand;
     private String price;
