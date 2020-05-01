@@ -1,17 +1,56 @@
 {
   "shopName": "HOCKEYBEZGRANIC",
-  "basePath": "https://hockeybezgranic.ru",
   "paginatorParam": "?PAGEN_1=",
   "menuItems": [
-    "/catalog/konki",
-    "/catalog/zashchita-igroka",
-    "/catalog/klyushki",
-    "/catalog/odezhda",
-    "/catalog/vratar",
-    "/catalog/sumki",
-    "/catalog/aksessuary",
-    "/catalog/trenazhery",
-    "/catalog/raznoe"
+    "https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/",
+    "https://hockeybezgranic.ru/catalog/konki/konki-rolikovye/",
+    "https://hockeybezgranic.ru/catalog/konki/konki-figurnye/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/nagrudniki/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/shchitki/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/shlem-igroka/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-pakha_1/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/nalokotniki/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/trusy/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/vizory-i-maski/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-shei_1/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/perchatki/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/shlem-igroka-s-maskoy/",
+    "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-zapyastya_1/",
+    "https://hockeybezgranic.ru/catalog/klyushki/kompozitnye/",
+    "https://hockeybezgranic.ru/catalog/klyushki/truby-i-kryuki/",
+    "https://hockeybezgranic.ru/catalog/klyushki/derevyannye/",
+    "https://hockeybezgranic.ru/catalog/klyushki/vratarskie/",
+    "https://hockeybezgranic.ru/catalog/odezhda/gamashi/",
+    "https://hockeybezgranic.ru/catalog/odezhda/kurtki-bryuki-kostyumy/",
+    "https://hockeybezgranic.ru/catalog/odezhda/golovnye-ubory/",
+    "https://hockeybezgranic.ru/catalog/odezhda/trenirovochnye-mayki/",
+    "https://hockeybezgranic.ru/catalog/odezhda/natelnoe-bele/",
+    "https://hockeybezgranic.ru/catalog/odezhda/futbolki-shorty-tolstovki/",
+    "https://hockeybezgranic.ru/catalog/odezhda/obuv/",
+    "https://hockeybezgranic.ru/catalog/vratar/nagrudniki-vratarskie/",
+    "https://hockeybezgranic.ru/catalog/vratar/trusy-vratarya/",
+    "https://hockeybezgranic.ru/catalog/vratar/konki-vratarya/",
+    "https://hockeybezgranic.ru/catalog/vratar/shchitki-vratarya/",
+    "https://hockeybezgranic.ru/catalog/vratar/maska-vratarya/",
+    "https://hockeybezgranic.ru/catalog/vratar/blin-i-lovushka-vratarya/",
+    "https://hockeybezgranic.ru/catalog/vratar/aksessuary-vratarya/",
+    "https://hockeybezgranic.ru/catalog/sumki/sumki-na-kolesakh/",
+    "https://hockeybezgranic.ru/catalog/sumki/sumki-bez-koles/",
+    "https://hockeybezgranic.ru/catalog/sumki/sumki-vratarya/",
+    "https://hockeybezgranic.ru/catalog/sumki/sumki-dlya-prinadlezhnostey/",
+    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-konkov/",
+    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-shlema/",
+    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-klyushek/",
+    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-igroka/",
+    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-mashiny/",
+    "https://hockeybezgranic.ru/catalog/trenazhery/khokkeynaya-shayba_1/",
+    "https://hockeybezgranic.ru/catalog/trenazhery/khokkeynye-vorota/",
+    "https://hockeybezgranic.ru/catalog/florbol_2/klyushki-dlya-florbola/",
+    "https://hockeybezgranic.ru/catalog/florbol_2/myachi-dlya-florbola/",
+    "https://hockeybezgranic.ru/catalog/raznoe/dlya-sudi/",
+    "https://hockeybezgranic.ru/catalog/raznoe/energeticheskie-braslety/",
+    "https://hockeybezgranic.ru/catalog/raznoe/prochee_1/",
+    "https://hockeybezgranic.ru/catalog/raznoe/dlya-trenera/"
   ],
   "rootElement": {
     "name": "catalog-item",
@@ -68,6 +107,15 @@
     },
     {
       "productField": "shopName",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "category",
       "htmlLocationChain": [
         {
           "name": "",

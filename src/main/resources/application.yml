@@ -1,6 +1,3 @@
-scrappingservice:
-  hockeybezgraniz:
-    basePath: https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/
 server:
   port: 8080
 spring:

@@ -14,7 +14,6 @@ import java.util.List;
 public class ScrapperMeta {
 
     private String shopName;
-    private String basePath;
     private String paginatorParam;
 
     private List<String> menuItems;

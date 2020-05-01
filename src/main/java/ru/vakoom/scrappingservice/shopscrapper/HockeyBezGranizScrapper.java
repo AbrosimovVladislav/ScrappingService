@@ -27,24 +27,6 @@ public class HockeyBezGranizScrapper extends Scrapper {
     }
 
     @Override
-    public List<Offer> menuItem(String menuItemUrl) {
-        String menuItemFullPath = scrapperMeta.getBasePath() + menuItemUrl;
-        Document fullMenuItemDOc;
-        try {
-            fullMenuItemDOc = Jsoup.connect(menuItemFullPath).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return Collections.emptyList();
-        }
-
-        return scrapperService.getElementValueByClassAndAttribute(fullMenuItemDOc, "category-more")
-                .stream()
-                .map(catalogWithMenuItemWithCategoryPath -> category(scrapperMeta.getBasePath() + catalogWithMenuItemWithCategoryPath))
-                .flatMap(List::stream)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public Integer defineCountOfPages(Document fullCategoryDoc) {
         int lastPageNumber = 1;
         Elements pageNav = fullCategoryDoc.getElementsByClass("page-nav");
