@@ -9,13 +9,13 @@ import java.util.Optional;
 @Repository
 public interface OfferRepository extends CrudRepository<Offer, Long> {
 
-    Optional<Offer> findByNameAndBrand(String name, String brand);
+    Optional<Offer> findByNameAndBrandAndShopName(String name, String brand, String shopName);
 
     default void saveOrUpdate(Offer offer) {
-        this.findByNameAndBrand(offer.name(), offer.brand())
-            .ifPresentOrElse(
-                p -> this.save(offer.id(p.id())),
-                () -> this.save(offer)
-            );
+        this.findByNameAndBrandAndShopName(offer.name(), offer.brand(), offer.shopName())
+                .ifPresentOrElse(
+                        p -> this.save(offer.id(p.id())),
+                        () -> this.save(offer)
+                );
     }
 }
