@@ -3,8 +3,8 @@ package ru.vakoom.scrappingservice.web;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.vakoom.scrappingservice.model.Product;
-import ru.vakoom.scrappingservice.service.HockeyBezGranizScrappingService;
+import ru.vakoom.scrappingservice.model.Offer;
+import ru.vakoom.scrappingservice.service.HockeyBezGranizScrapper;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ScrappingServiceApiController {
 
-    private final HockeyBezGranizScrappingService scrapper;
+    private final HockeyBezGranizScrapper scrapper;
 
     @GetMapping("/go")
-    public List<Product> get() {
+    public List<Offer> get() {
         var a = scrapper.fullCatalog();
         return a;
     }

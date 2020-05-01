@@ -10,12 +10,14 @@ import javax.persistence.Id;
 @Data
 @Accessors(fluent = true)
 @Entity
-public class Product {
+public class Offer {
     @Id @GeneratedValue private Long id;
 
     private String name;
     private String brand;
     private String price;
+    private Boolean inStore;
+    private String shopName;
     private String link;
     private String imgLink;
 

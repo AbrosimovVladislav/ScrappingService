@@ -13,6 +13,7 @@ import java.util.List;
 @Slf4j
 public class ScrapperMeta {
 
+    private String shopName;
     private String basePath;
     private String paginatorParam;
 

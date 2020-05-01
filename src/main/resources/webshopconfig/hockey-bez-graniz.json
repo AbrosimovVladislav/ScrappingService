@@ -1,4 +1,5 @@
 {
+  "shopName": "HOCKEYBEZGRANIC",
   "basePath": "https://hockeybezgranic.ru",
   "paginatorParam": "?PAGEN_1=",
   "rootElement": {
@@ -42,6 +43,24 @@
         {
           "name": "price",
           "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "inStore",
+      "htmlLocationChain": [
+        {
+          "name": "href@#",
+          "htmlObjectType": "attrwithvalue"
+        }
+      ]
+    },
+    {
+      "productField": "shopName",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
         }
       ]
     },

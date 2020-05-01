@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.vakoom.scrappingservice.model.Product;
+import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.repository.HockeyRepository;
 
 import java.io.IOException;
@@ -18,17 +18,16 @@ import java.util.stream.Collectors;
 //    https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/
 @Slf4j
 @Service
-public class HockeyBezGranizScrappingService extends Scrapper {
+public class HockeyBezGranizScrapper extends Scrapper {
 
-    //TODO ДОБАВИТЬ ИНФУ ПРО НАЛИЧИЕ В МАГАЗИНЕ. ЕСЛИ ПРЕДЗАКАЗ, ЗНАЧИТ НЕТ В НАЛИЧИИ
     //TODO ДОКОСТЫЛИТЬ С ДЕТСКИМИ
 
     @Autowired
     private HockeyRepository hockeyRepository;
 
     @Override
-    public List<Product> fullCatalog() { //TODO move to scrapper
-        List<String> catalogUrls = List.of(/*"/catalog/konki", "/catalog/zashchita-igroka", "/catalog/klyushki", "/catalog/odezhda", "/catalog/vratar", "/catalog/sumki", "/catalog/aksessuary", "/catalog/trenazhery",*/ "/catalog/raznoe", "/detskaya-ekipirovka/");
+    public List<Offer> fullCatalog() { //TODO move to scrapper
+        List<String> catalogUrls = List.of(/*"/catalog/konki", "/catalog/zashchita-igroka", "/catalog/klyushki", "/catalog/odezhda", "/catalog/vratar", "/catalog/sumki", "/catalog/aksessuary", "/catalog/trenazhery",*/ "/catalog/raznoe"/*, "/detskaya-ekipirovka/"*/);
         return catalogUrls.stream()
                 .map(this::menuItem)
                 .flatMap(List::stream)
@@ -37,9 +36,9 @@ public class HockeyBezGranizScrappingService extends Scrapper {
     }
 
     @Override
-    public List<Product> menuItem(String menuItemUrl) {
+    public List<Offer> menuItem(String menuItemUrl) {
         String menuItemFullPath = scrapperMeta.getBasePath() + menuItemUrl;
-        Document fullMenuItemDOc = null;
+        Document fullMenuItemDOc;
         try {
             fullMenuItemDOc = Jsoup.connect(menuItemFullPath).get();
         } catch (IOException e) {

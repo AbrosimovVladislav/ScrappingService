@@ -6,7 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.vakoom.scrappingservice.model.Product;
+import ru.vakoom.scrappingservice.model.Offer;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;
@@ -27,11 +27,11 @@ public abstract class Scrapper {
         scrapperMeta = ScrapperMeta.fromJson("src/main/resources/webshopconfig/hockey-bez-graniz.json");
     }
 
-    public abstract List<Product> fullCatalog();
+    public abstract List<Offer> fullCatalog();
 
-    public abstract List<Product> menuItem(String menuItemUrl);
+    public abstract List<Offer> menuItem(String menuItemUrl);
 
-    public List<Product> category(String categoryUrl) {
+    public List<Offer> category(String categoryUrl) {
         Document categoryDoc;
         try {
             categoryDoc = Jsoup.connect(categoryUrl).get();
@@ -54,7 +54,7 @@ public abstract class Scrapper {
 
     public abstract Integer defineCountOfPages(Document fullCategoryDoc);
 
-    public List<Product> productsPage(String pageUrl) {
+    public List<Offer> productsPage(String pageUrl) {
         Document doc;
         try {
             doc = Jsoup.connect(pageUrl).get();
@@ -64,33 +64,40 @@ public abstract class Scrapper {
         }
 
         Elements products = scrapperService.getElementsByClass(doc, scrapperMeta.getRootElement().getName());
-        return products.stream().map(catalogItem -> createProductFromMeta(catalogItem, scrapperMeta))
+        return products.stream().map(catalogItem -> createOfferFromMeta(catalogItem, scrapperMeta))
                 .collect(Collectors.toList());
     }
 
-    public Product createProductFromMeta(Element startElement, ScrapperMeta meta) {
-        Product product = new Product();
+    public Offer createOfferFromMeta(Element startElement, ScrapperMeta meta) {
+        Offer offer = new Offer();
         for (ScrapperMeta.ElementChain elementChain : meta.getElementChainList()) {
             switch (elementChain.getProductField()) {
                 case "name":
-                    product.name(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.name(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
                 case "brand":
-                    product.brand(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.brand(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
                 case "price":
-                    product.price(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.price(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    break;
+                case "inStore":
+                    offer.inStore(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                            .equalsIgnoreCase("купить"));
+                    break;
+                case "shopName":
+                    offer.shopName(scrapperMeta.getShopName());
                     break;
                 case "link":
-                    product.link(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.link(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
                 case "imgLink":
-                    product.imgLink(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.imgLink(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
             }
         }
-        log.info(product.toString());
-        return product;
+        log.info(offer.toString());
+        return offer;
     }
 
 }

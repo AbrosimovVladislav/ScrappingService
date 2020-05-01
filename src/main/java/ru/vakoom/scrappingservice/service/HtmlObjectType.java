@@ -35,6 +35,15 @@ public enum HtmlObjectType {
         public Object getValueByParam(Element startElement, String paramName) {
             return startElement.attr(paramName);
         }
+    },
+    ATTRWITHVALUE {
+        @Override
+        public Object getValueByParam(Element startElement, String paramName) {
+            return startElement.getElementsByAttributeValue(
+                    paramName.substring(0,paramName.indexOf("@")),
+                    paramName.substring(paramName.indexOf("@")+1)
+                    ).text();
+        }
     };
 
     public static HtmlObjectType of(String value) {
@@ -48,6 +57,8 @@ public enum HtmlObjectType {
             return LASTTAG;
         } else if (value.equalsIgnoreCase(ATTR.toString())) {
             return ATTR;
+        } else if (value.equalsIgnoreCase(ATTRWITHVALUE.toString())) {
+            return ATTRWITHVALUE;
         } else {
             log.error("HtmlChainParam with that name pipiska");
             return CLASS;
