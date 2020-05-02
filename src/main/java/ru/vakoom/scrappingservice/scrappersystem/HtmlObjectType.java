@@ -40,9 +40,19 @@ public enum HtmlObjectType {
         @Override
         public Object getValueByParam(Element startElement, String paramName) {
             return startElement.getElementsByAttributeValue(
-                    paramName.substring(0,paramName.indexOf("@")),
-                    paramName.substring(paramName.indexOf("@")+1)
-                    ).text();
+                    paramName.substring(0, paramName.indexOf("@")),
+                    paramName.substring(paramName.indexOf("@") + 1)
+            ).text();
+        }
+    },
+    FINDELEMENTBYATTRWITHVALUEANDGETATTR {
+        @Override
+        public Object getValueByParam(Element startElement, String paramName) {
+            String[] params = paramName.split("@");
+            return startElement.getElementsByAttributeValue(
+                    params[0],
+                    params[1])
+                    .get(0).attr(params[2]);
         }
     };
 
@@ -59,6 +69,8 @@ public enum HtmlObjectType {
             return ATTR;
         } else if (value.equalsIgnoreCase(ATTRWITHVALUE.toString())) {
             return ATTRWITHVALUE;
+        } else if (value.equalsIgnoreCase(FINDELEMENTBYATTRWITHVALUEANDGETATTR.toString())) {
+            return FINDELEMENTBYATTRWITHVALUEANDGETATTR;
         } else {
             log.error("HtmlChainParam with that name pipiska");
             return CLASS;

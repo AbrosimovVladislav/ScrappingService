@@ -19,7 +19,8 @@ public class ScrappingServiceApiController {
     @GetMapping("/go")
     public List<Offer> get() {
         var a = hockeyBezGranizScrapper.fullCatalog();
-//        var a = sportDepoScrapper.fullCatalog();
+        var b = sportDepoScrapper.fullCatalog();
+        a.addAll(b);
         return a;
     }
 

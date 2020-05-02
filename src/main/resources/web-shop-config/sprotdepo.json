@@ -1,0 +1,137 @@
+{
+  "basePath": "https://www.sportdepo.ru/",
+  "shopName": "SPORTDEPO",
+  "paginatorParam": "?shops=%5B80%5D%5B12%5D%5B28%5D&page=",
+  "menuItems": [
+    "https://www.sportdepo.ru/catalog/name/Price/id/23016/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10661/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23048/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23035/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23107/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10181/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10283/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10345/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10376/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10384/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10402/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10443/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10459/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10482/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23004/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/12548/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22996/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22980/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22981/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22982/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22983/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22984/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22985/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22986/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22987/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22989/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22990/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22993/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22994/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/22995/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23023/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23024/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23025/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23026/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23027/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23028/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23029/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23030/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/11370/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/43019/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23049/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10561/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23018/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23046/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23017/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/14824/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10632/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/10648/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23007/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/11477/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/12587/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23031/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/11150/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23021/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/12321/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/23047/",
+    "https://www.sportdepo.ru/catalog/name/Price/id/35894/"
+  ],
+  "rootElement": {
+    "name": "karta",
+    "htmlObjectType": "class"
+  },
+  "elementChainList": [
+    {
+      "productField": "name",
+      "htmlLocationChain": [
+        {
+          "name": "itemprop@name",
+          "htmlObjectType": "attrwithvalue"
+        }
+      ]
+    },
+    {
+      "productField": "brand",
+      "htmlLocationChain": [
+        {
+          "name": "itemprop@brand@content",
+          "htmlObjectType": "findelementbyattrwithvalueandgetattr"
+        }
+      ]
+    },
+    {
+      "productField": "price",
+      "htmlLocationChain": [
+        {
+          "name": "itemprop@price@content",
+          "htmlObjectType": "findelementbyattrwithvalueandgetattr"
+        }
+      ]
+    },
+    {
+      "productField": "inStore",
+      "htmlLocationChain": [
+        {
+          "name": "itemprop@availability@href",
+          "htmlObjectType": "findelementbyattrwithvalueandgetattr"
+        }
+      ]
+    },
+    {
+      "productField": "shopName",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "category",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "link",
+      "htmlLocationChain": [
+        {
+          "name": "img_price",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "href",
+          "htmlObjectType": "attr"
+        }
+      ]
+    }
+  ]
+}

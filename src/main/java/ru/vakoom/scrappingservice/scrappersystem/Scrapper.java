@@ -5,6 +5,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.model.ScrappingDateLog;
@@ -20,18 +21,16 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Slf4j
-public abstract class Scrapper {
+public abstract class Scrapper implements InitializingBean {
 
     @Autowired
     protected ScrapperService scrapperService;
-    protected ScrapperMeta scrapperMeta;
-
     @Autowired
     protected OfferRepository offerRepository;
     @Autowired
     protected ScrappingDateLogRepository scrappingDateLogRepository;
 
-    public abstract void init();
+    protected ScrapperMeta scrapperMeta;
 
     public List<Offer> fullCatalog() {
         List<String> menuItemUrls = new ArrayList<>(scrapperMeta.getMenuItems());
@@ -104,7 +103,9 @@ public abstract class Scrapper {
                     break;
                 case "inStore":
                     offer.inStore(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
-                            .equalsIgnoreCase("купить"));
+                            .equalsIgnoreCase("купить") ||
+                            scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                                    .contains("InStock"));
                     break;
                 case "category":
                     offer.category(categoryName);

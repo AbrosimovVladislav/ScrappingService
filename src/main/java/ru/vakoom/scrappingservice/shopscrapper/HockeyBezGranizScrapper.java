@@ -1,28 +1,20 @@
 package ru.vakoom.scrappingservice.shopscrapper;
 
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
-import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
 
-//    https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/
 @Slf4j
 @Service
 public class HockeyBezGranizScrapper extends Scrapper {
-    @Override
     @PostConstruct
-    public void init() {
+    public void afterPropertiesSet() {
         scrapperMeta = ScrapperMeta.fromJson("src/main/resources/web-shop-config/hockeybezgranic.json");
     }
 
