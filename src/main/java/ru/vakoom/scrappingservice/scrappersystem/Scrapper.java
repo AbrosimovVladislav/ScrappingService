@@ -94,28 +94,28 @@ public abstract class Scrapper implements InitializingBean {
         for (ScrapperMeta.ElementChain elementChain : meta.getElementChainList()) {
             switch (elementChain.getProductField()) {
                 case "name":
-                    offer.name(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.setName(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
                 case "brand":
-                    offer.brand(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.setBrand(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
                 case "price":
-                    offer.price(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.setPrice(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
                 case "inStore":
-                    offer.inStore(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                    offer.setInStore(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
                             .equalsIgnoreCase("купить") ||
                             scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
                                     .contains("InStock"));
                     break;
                 case "category":
-                    offer.category(categoryName);
+                    offer.setCategory(categoryName);
                     break;
                 case "shopName":
-                    offer.shopName(scrapperMeta.getShopName());
+                    offer.setShopName(scrapperMeta.getShopName());
                     break;
                 case "link":
-                    offer.link(scrapperMeta.getBasePath() + scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.setLink(scrapperMeta.getBasePath() + scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
             }
         }
