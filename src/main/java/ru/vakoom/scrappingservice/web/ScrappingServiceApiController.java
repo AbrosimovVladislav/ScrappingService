@@ -4,8 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.vakoom.scrappingservice.model.Offer;
-import ru.vakoom.scrappingservice.shopscrapper.HockeyBezGranizScrapper;
-import ru.vakoom.scrappingservice.shopscrapper.SportDepoScrapper;
+import ru.vakoom.scrappingservice.scheduler.Scheduler;
 
 import java.util.List;
 
@@ -13,14 +12,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ScrappingServiceApiController {
 
-    private final HockeyBezGranizScrapper hockeyBezGranizScrapper;
-    private final SportDepoScrapper sportDepoScrapper;
+    private final Scheduler scheduler;
 
     @GetMapping("/go")
     public List<Offer> get() {
-        var a = hockeyBezGranizScrapper.fullCatalog();
-        var b = sportDepoScrapper.fullCatalog();
-        a.addAll(b);
+        List<Offer> a = scheduler.refreshOffers();
         return a;
     }
 

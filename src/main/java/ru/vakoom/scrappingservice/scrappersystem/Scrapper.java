@@ -33,6 +33,7 @@ public abstract class Scrapper implements InitializingBean {
     protected ScrapperMeta scrapperMeta;
 
     public List<Offer> fullCatalog() {
+        //ToDo если из скрапа придет пустой список, он не должен дойти до агрегатора. Лучше сохранить старые данные чем пустоту
         List<ScrapperMeta.MenuItem> menuItemUrls = new ArrayList<>(scrapperMeta.getMenuItems());
         //ToDo подумать как убрать в аннотации
         ScrappingDateLog scrappingDateLog = new ScrappingDateLog();
@@ -40,8 +41,8 @@ public abstract class Scrapper implements InitializingBean {
         long start = System.currentTimeMillis();
         List<Offer> offers = menuItemUrls.stream()
                 .map(this::category)
+                .peek(offerRepository::saveAll)
                 .flatMap(List::stream)
-                .peek(offerRepository::saveOrUpdate)
                 .collect(Collectors.toList());
         long finish = System.currentTimeMillis();
         scrappingDateLog.setTimeOfScrapping(finish - start);
@@ -51,7 +52,7 @@ public abstract class Scrapper implements InitializingBean {
         return offers;
     }
 
-    public List<Offer> category(ScrapperMeta.MenuItem menuItem) {
+    private List<Offer> category(ScrapperMeta.MenuItem menuItem) {
         Document categoryDoc;
         try {
             categoryDoc = Jsoup.connect(menuItem.getUrl()).get();
@@ -65,7 +66,7 @@ public abstract class Scrapper implements InitializingBean {
         log.info("Category {} has {} pages", menuItem.getCategoryName(), pages);
 
         //Range takes form first page to last not inclusive. That is why using +1s
-        return IntStream.range(1, pages+1)
+        return IntStream.range(1, pages + 1)
                 .mapToObj(i -> menuItem.getUrl() + scrapperMeta.getPaginatorParam() + i)
                 .map(url -> productsPage(url, menuItem.getCategoryName()))
                 .flatMap(List::stream)
@@ -74,7 +75,7 @@ public abstract class Scrapper implements InitializingBean {
 
     public abstract Integer defineCountOfPages(Document fullCategoryDoc);
 
-    public List<Offer> productsPage(String pageUrl, String categoryName) {
+    private List<Offer> productsPage(String pageUrl, String categoryName) {
         Document doc;
         try {
             doc = Jsoup.connect(pageUrl).get();
@@ -88,7 +89,7 @@ public abstract class Scrapper implements InitializingBean {
                 .collect(Collectors.toList());
     }
 
-    public Offer createOfferFromMeta(Element startElement, ScrapperMeta meta, String categoryName) {
+    private Offer createOfferFromMeta(Element startElement, ScrapperMeta meta, String categoryName) {
         Offer offer = new Offer();
         for (ScrapperMeta.ElementChain elementChain : meta.getElementChainList()) {
             switch (elementChain.getProductField()) {
