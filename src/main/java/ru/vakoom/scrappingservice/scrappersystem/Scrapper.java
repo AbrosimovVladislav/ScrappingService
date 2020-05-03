@@ -100,7 +100,7 @@ public abstract class Scrapper implements InitializingBean {
                     offer.setBrand(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
                 case "price":
-                    offer.setPrice(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                    offer.setPrice(parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())));
                     break;
                 case "inStore":
                     offer.setInStore(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
@@ -123,4 +123,10 @@ public abstract class Scrapper implements InitializingBean {
         return offer;
     }
 
+    private Double parseDouble(String price) {
+        String onlyDoubleRegex = "[^0-9]";
+        price = price.replaceAll(onlyDoubleRegex, "");
+        price = price.replace(",", ".");
+        return Double.parseDouble(price);
+    }
 }
