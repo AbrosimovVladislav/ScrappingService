@@ -33,7 +33,7 @@ public abstract class Scrapper implements InitializingBean {
     protected ScrapperMeta scrapperMeta;
 
     public List<Offer> fullCatalog() {
-        List<String> menuItemUrls = new ArrayList<>(scrapperMeta.getMenuItems());
+        List<ScrapperMeta.MenuItem> menuItemUrls = new ArrayList<>(scrapperMeta.getMenuItems());
         //ToDo подумать как убрать в аннотации
         ScrappingDateLog scrappingDateLog = new ScrappingDateLog();
         scrappingDateLog.setDateOfScrap(new Date());
@@ -51,10 +51,10 @@ public abstract class Scrapper implements InitializingBean {
         return offers;
     }
 
-    public List<Offer> category(String categoryUrl) {
+    public List<Offer> category(ScrapperMeta.MenuItem menuItem) {
         Document categoryDoc;
         try {
-            categoryDoc = Jsoup.connect(categoryUrl).get();
+            categoryDoc = Jsoup.connect(menuItem.getUrl()).get();
         } catch (IOException e) {
             e.printStackTrace();
             return Collections.emptyList();
@@ -62,14 +62,12 @@ public abstract class Scrapper implements InitializingBean {
 
         Integer pages = defineCountOfPages(categoryDoc);
 
-        String substringForLog = categoryUrl.substring(0, categoryUrl.length() - 1);
-        String categoryName = substringForLog.substring(substringForLog.lastIndexOf("/") + 1);
-        log.info("Category {} has {} pages", categoryName, pages);
+        log.info("Category {} has {} pages", menuItem.getCategoryName(), pages);
 
         //Range takes form first page to last not inclusive. That is why using +1s
         return IntStream.range(1, pages+1)
-                .mapToObj(i -> categoryUrl + scrapperMeta.getPaginatorParam() + i)
-                .map(url -> productsPage(url, categoryName))
+                .mapToObj(i -> menuItem.getUrl() + scrapperMeta.getPaginatorParam() + i)
+                .map(url -> productsPage(url, menuItem.getCategoryName()))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
     }

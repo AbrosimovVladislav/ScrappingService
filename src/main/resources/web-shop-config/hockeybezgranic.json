@@ -3,55 +3,166 @@
   "shopName": "HOCKEYBEZGRANIC",
   "paginatorParam": "?PAGEN_1=",
   "menuItems": [
-    "https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/",
-    "https://hockeybezgranic.ru/catalog/konki/konki-rolikovye/",
-    "https://hockeybezgranic.ru/catalog/konki/konki-figurnye/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/nagrudniki/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/shchitki/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/shlem-igroka/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-pakha_1/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/nalokotniki/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/trusy/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/vizory-i-maski/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-shei_1/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/perchatki/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/shlem-igroka-s-maskoy/",
-    "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-zapyastya_1/",
-    "https://hockeybezgranic.ru/catalog/klyushki/kompozitnye/",
-    "https://hockeybezgranic.ru/catalog/klyushki/truby-i-kryuki/",
-    "https://hockeybezgranic.ru/catalog/klyushki/derevyannye/",
-    "https://hockeybezgranic.ru/catalog/klyushki/vratarskie/",
-    "https://hockeybezgranic.ru/catalog/odezhda/gamashi/",
-    "https://hockeybezgranic.ru/catalog/odezhda/kurtki-bryuki-kostyumy/",
-    "https://hockeybezgranic.ru/catalog/odezhda/golovnye-ubory/",
-    "https://hockeybezgranic.ru/catalog/odezhda/trenirovochnye-mayki/",
-    "https://hockeybezgranic.ru/catalog/odezhda/natelnoe-bele/",
-    "https://hockeybezgranic.ru/catalog/odezhda/futbolki-shorty-tolstovki/",
-    "https://hockeybezgranic.ru/catalog/odezhda/obuv/",
-    "https://hockeybezgranic.ru/catalog/vratar/nagrudniki-vratarskie/",
-    "https://hockeybezgranic.ru/catalog/vratar/trusy-vratarya/",
-    "https://hockeybezgranic.ru/catalog/vratar/konki-vratarya/",
-    "https://hockeybezgranic.ru/catalog/vratar/shchitki-vratarya/",
-    "https://hockeybezgranic.ru/catalog/vratar/maska-vratarya/",
-    "https://hockeybezgranic.ru/catalog/vratar/blin-i-lovushka-vratarya/",
-    "https://hockeybezgranic.ru/catalog/vratar/aksessuary-vratarya/",
-    "https://hockeybezgranic.ru/catalog/sumki/sumki-na-kolesakh/",
-    "https://hockeybezgranic.ru/catalog/sumki/sumki-bez-koles/",
-    "https://hockeybezgranic.ru/catalog/sumki/sumki-vratarya/",
-    "https://hockeybezgranic.ru/catalog/sumki/sumki-dlya-prinadlezhnostey/",
-    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-konkov/",
-    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-shlema/",
-    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-klyushek/",
-    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-igroka/",
-    "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-mashiny/",
-    "https://hockeybezgranic.ru/catalog/trenazhery/khokkeynaya-shayba_1/",
-    "https://hockeybezgranic.ru/catalog/trenazhery/khokkeynye-vorota/",
-    "https://hockeybezgranic.ru/catalog/florbol_2/klyushki-dlya-florbola/",
-    "https://hockeybezgranic.ru/catalog/florbol_2/myachi-dlya-florbola/",
-    "https://hockeybezgranic.ru/catalog/raznoe/dlya-sudi/",
-    "https://hockeybezgranic.ru/catalog/raznoe/energeticheskie-braslety/",
-    "https://hockeybezgranic.ru/catalog/raznoe/prochee_1/",
-    "https://hockeybezgranic.ru/catalog/raznoe/dlya-trenera/"
+    {
+      "url": "https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/",
+      "categoryName": "КОНЬКИ/КОНЬКИ_ХОККЕЙНЫЕ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/konki/konki-rolikovye/",
+      "categoryName": "КОНЬКИ/КОНЬКИ_РОЛИКОВЫЕ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/konki/konki-figurnye/",
+      "categoryName": "КОНЬКИ/КОНЬКИ_ФИГУРНЫЕ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/nagrudniki/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/НАГРУДНИКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/shchitki/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ЩИТКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/shlem-igroka/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ШЛЕМ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-pakha_1/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ЗАЩИТА_ПАХА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/nalokotniki/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/НАЛОКОТНИКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/trusy/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ТРУСЫ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/vizory-i-maski/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ВИЗОРЫ_И_МАСКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-shei_1/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ЗАЩИТА_ШЕИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/perchatki/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ПЕРЧАТКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/shlem-igroka-s-maskoy/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ШЛЕМ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/zashchita-igroka/zashchita-zapyastya_1/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ЗАЩИТА_ЗАПЯСТЬЯ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/klyushki/kompozitnye/",
+      "categoryName": "КЛЮШКИ/ИГРОКА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/klyushki/truby-i-kryuki/",
+      "categoryName": "КЛЮШКИ/ИГРОКА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/klyushki/derevyannye/",
+      "categoryName": "КЛЮШКИ/ИГРОКА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/klyushki/vratarskie/",
+      "categoryName": "КЛЮШКИ/ВРАТАРЯ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/odezhda/gamashi/",
+      "categoryName": "ОДЕЖДА/ГАМАШИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/odezhda/trenirovochnye-mayki/",
+      "categoryName": "ОДЕЖДА/ТРЕНИРОВОЧНЫЕ_МАЙКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/odezhda/natelnoe-bele/",
+      "categoryName": "ОДЕЖДА/НАТЕЛЬНОЕ_БЕЛЬЕ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/vratar/nagrudniki-vratarskie/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/НАГРУДНИКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/vratar/trusy-vratarya/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/ТРУСЫ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/vratar/konki-vratarya/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/КОНЬКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/vratar/shchitki-vratarya/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/ЩИТКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/vratar/maska-vratarya/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/ШЛЕМА_И_МАСКИ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/vratar/blin-i-lovushka-vratarya/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/БЛИН_И_ЛОВУШКА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/vratar/aksessuary-vratarya/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/АКСЕССУАРЫ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/sumki/sumki-na-kolesakh/",
+      "categoryName": "СУМКИ/СУМКИ_ХОККЕЙНЫЕ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/sumki/sumki-bez-koles/",
+      "categoryName": "СУМКИ/СУМКИ_ХОККЕЙНЫЕ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/sumki/sumki-vratarya/",
+      "categoryName": "СУМКИ/СУМКИ_ВРАТАРЯ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/sumki/sumki-dlya-prinadlezhnostey/",
+      "categoryName": "СУМКИ/СУМКИ_ДЛЯ_ПРИНАДЛЕЖНОСТЕЙ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-konkov/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-shlema/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_ШЛЕМА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-klyushek/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КЛЮШЕК"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/aksessuary/aksessuary-dlya-igroka/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_ИГРОКА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/trenazhery/khokkeynaya-shayba_1/",
+      "categoryName": "ХОККЕЙНАЯ_ШАЙБА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/trenazhery/khokkeynye-vorota/",
+      "categoryName": "ХОККЕЙНЫЕ_ВОРОТА"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/raznoe/dlya-sudi/",
+      "categoryName": "РАЗНОЕ"
+    },
+    {
+      "url": "https://hockeybezgranic.ru/catalog/raznoe/dlya-trenera/",
+      "categoryName": "РАЗНОЕ"
+    }
   ],
   "rootElement": {
     "name": "catalog-item",

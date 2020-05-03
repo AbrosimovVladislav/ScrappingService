@@ -17,7 +17,7 @@ public class ScrapperMeta {
     private String shopName;
     private String paginatorParam;
 
-    private List<String> menuItems;
+    private List<MenuItem> menuItems;
 
     /**
      * Корневой элемент представляющий собой сужение html документа
@@ -64,6 +64,13 @@ public class ScrapperMeta {
          */
         private String htmlObjectType;
     }
+
+    @Data
+    static class MenuItem {
+        private String url;
+        private String categoryName;
+    }
+
 
     public static ScrapperMeta fromJson(String path) {
         try {

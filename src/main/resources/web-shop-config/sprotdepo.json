@@ -3,63 +3,190 @@
   "shopName": "SPORTDEPO",
   "paginatorParam": "?shops=%5B80%5D%5B12%5D%5B28%5D&page=",
   "menuItems": [
-    "https://www.sportdepo.ru/catalog/name/Price/id/23016/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10661/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23048/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23035/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23107/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10181/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10283/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10345/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10376/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10384/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10402/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10443/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10459/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10482/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23004/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/12548/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22996/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22980/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22981/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22982/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22983/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22984/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22985/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22986/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22987/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22989/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22990/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22993/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22994/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/22995/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23023/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23024/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23025/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23026/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23027/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23028/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23029/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23030/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/11370/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/43019/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23049/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10561/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23018/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23046/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23017/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/14824/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10632/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/10648/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23007/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/11477/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/12587/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23031/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/11150/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23021/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/12321/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/23047/",
-    "https://www.sportdepo.ru/catalog/name/Price/id/35894/"
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23016/",
+      "categoryName": "КОНЬКИ/КОНЬКИ_ХОККЕЙНЫЕ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10661/",
+      "categoryName": "КЛЮШКИ/ИГРОКА"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23048/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ТРУСЫ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23035/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ПЕРЧАТКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23107/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/АКСЕССУАРЫ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10181/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/БЛИН_И_ЛОВУШКА"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10283/",
+      "categoryName": "КЛЮШКИ/ВРАТАРЯ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10345/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/КОНЬКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10376/",
+      "categoryName": "ОДЕЖДА/ТРЕНИРОВОЧНЫЕ_МАЙКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10384/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/МАСКА"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10402/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/НАГРУДНИКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10443/",
+      "categoryName": "СУМКИ/СУМКИ_ВРАТАРЯ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10459/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/ТРУСЫ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10482/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/ШЛЕМА_И_МАСКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23004/",
+      "categoryName": "ВРАТАСКАЯ_ФОРМА/ЩИТКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/12548/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ШЛЕМ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22996/",
+      "categoryName": "ОДЕЖДА/НАТЕЛЬНОЕ_БЕЛЬЕ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22980/",
+      "categoryName": "ОДЕЖДА/НАТЕЛЬНОЕ_БЕЛЬЕ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22981/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_ИГРОКА"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22983/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ЗАЩИТА_ШЕИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22984/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КЛЮШЕК"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22985/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_ИГРОКА"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22986/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КЛЮШЕК"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22987/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_ИГРОКА"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22989/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_ИГРОКА"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22990/",
+      "categoryName": "РАЗНОЕ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22993/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22994/",
+      "categoryName": "ХОККЕЙНАЯ_ШАЙБА"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/22995/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23027/",
+      "categoryName": "ОДЕЖДА/НАТЕЛЬНОЕ_БЕЛЬЕ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/11370/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/НАГРУДНИКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23049/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ЩИТКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10561/",
+      "categoryName": "ОДЕЖДА/ГАМАШИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23018/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ВИЗОРЫ_И_МАСКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23046/",
+      "categoryName": "СУМКИ/СУМКИ_ХОККЕЙНЫЕ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23017/",
+      "categoryName": "ОДЕЖДА/ТРЕНИРОВОЧНЫЕ_МАЙКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/14824/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10632/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/10648/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23007/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/11477/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/НАЛОКОТНИКИ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/12587/",
+      "categoryName": "ЗАЩИТА_ИГРОКА/ШЛЕМ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23031/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КЛЮШЕК"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/11150/",
+      "categoryName": "АКСЕССУАРЫ/АКСЕССУАРЫ_ДЛЯ_КЛЮШЕК"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/12321/",
+      "categoryName": "РАЗНОЕ"
+    },
+    {
+      "url": "https://www.sportdepo.ru/catalog/name/Price/id/23047/",
+      "categoryName": "СУМКИ/СУМКИ_ДЛЯ_ПРИНАДЛЕЖНОСТЕЙ"
+    }
   ],
   "rootElement": {
     "name": "karta",
