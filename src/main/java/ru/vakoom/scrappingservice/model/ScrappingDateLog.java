@@ -17,4 +17,5 @@ public class ScrappingDateLog {
     private String shopName;
     private Date dateOfScrap;
     private Long timeOfScrapping;
+    private int countOfRecords;
 }

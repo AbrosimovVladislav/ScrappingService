@@ -22,13 +22,13 @@ public class HockeyBezGranizScrapper extends Scrapper {
     public Integer defineCountOfPages(Document fullCategoryDoc) {
         int lastPageNumber = 1;
         Elements pageNav = fullCategoryDoc.getElementsByClass("page-nav");
-        if (pageNav.isEmpty()) return ++lastPageNumber;
+        if (pageNav.isEmpty()) return lastPageNumber;
         for (Element hrefE : pageNav.get(0).getElementsByAttribute("href")) {
             int currentPageNumber = Integer.parseInt(hrefE.text());
             if (lastPageNumber < currentPageNumber) {
                 lastPageNumber = currentPageNumber;
             }
         }
-        return ++lastPageNumber;
+        return lastPageNumber;
     }
 }

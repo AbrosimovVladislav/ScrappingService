@@ -46,6 +46,7 @@ public abstract class Scrapper implements InitializingBean {
         long finish = System.currentTimeMillis();
         scrappingDateLog.setTimeOfScrapping(finish - start);
         scrappingDateLog.setShopName(scrapperMeta.getShopName());
+        scrappingDateLog.setCountOfRecords(offers.size());
         scrappingDateLogRepository.save(scrappingDateLog);
         return offers;
     }
@@ -63,9 +64,10 @@ public abstract class Scrapper implements InitializingBean {
 
         String substringForLog = categoryUrl.substring(0, categoryUrl.length() - 1);
         String categoryName = substringForLog.substring(substringForLog.lastIndexOf("/") + 1);
-        log.info("Category {} has {} pages", categoryName, pages - 1);
+        log.info("Category {} has {} pages", categoryName, pages);
 
-        return IntStream.range(1, pages)
+        //Range takes form first page to last not inclusive. That is why using +1s
+        return IntStream.range(1, pages+1)
                 .mapToObj(i -> categoryUrl + scrapperMeta.getPaginatorParam() + i)
                 .map(url -> productsPage(url, categoryName))
                 .flatMap(List::stream)
