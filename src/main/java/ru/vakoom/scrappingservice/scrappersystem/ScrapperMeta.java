@@ -3,6 +3,7 @@ package ru.vakoom.scrappingservice.scrappersystem;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import ru.vakoom.scrappingservice.model.Type;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -68,7 +69,7 @@ public class ScrapperMeta {
     @Data
     static class MenuItem {
         private String url;
-        private String categoryName;
+        private Long typeId;
     }
 
 

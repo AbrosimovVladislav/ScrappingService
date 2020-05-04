@@ -248,6 +248,15 @@
       ]
     },
     {
+      "productField": "type",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
       "productField": "link",
       "htmlLocationChain": [
         {

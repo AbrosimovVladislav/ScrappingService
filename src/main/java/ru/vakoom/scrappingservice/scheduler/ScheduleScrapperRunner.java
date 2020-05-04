@@ -38,7 +38,6 @@ public class ScheduleScrapperRunner {
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
         sendRequestToMatcher(offersForMatcherService);
-        //ToDo invoke your ali client here
     }
 
     private void sendRequestToMatcher(List<Offer> offers) {

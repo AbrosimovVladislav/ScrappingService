@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import static ru.vakoom.scrappingservice.model.Type.TYPE_ID;
+
 @Data
 @Entity
 public class Offer {
@@ -14,7 +16,10 @@ public class Offer {
     private String brand;
     private Double price;
     private Boolean inStore;
-    private String category;
+    @ManyToOne
+    @JoinColumn(name = TYPE_ID, nullable = false)
+    private Type type;
     private String shopName;
     private String link;
+    private String age;
 }
