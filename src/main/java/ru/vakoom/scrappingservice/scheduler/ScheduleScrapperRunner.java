@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
-public class Scheduler {
+public class ScheduleScrapperRunner {
 
     private final List<Scrapper> scrappers;
     private final OfferRepository offerRepository;
