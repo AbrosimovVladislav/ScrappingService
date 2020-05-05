@@ -105,7 +105,7 @@ public abstract class Scrapper implements InitializingBean {
                 case "name":
                     offer.setName(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
-                case "brand":
+                case "brand": //ToDo + завести таблицу брэнд, и проверять имя на содержание брэнда в нем
                     offer.setBrand(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
                 case "price":
