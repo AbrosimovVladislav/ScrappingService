@@ -11,7 +11,7 @@ public class ScrappingServiceApiController {
 
     private final ScheduleScrapperRunner scheduler;
 
-    @GetMapping("/go")
+    @GetMapping("/testRefreshOffers")
     public void get() {
         scheduler.refreshOffers();
     }
