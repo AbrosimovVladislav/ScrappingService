@@ -7,9 +7,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.vakoom.scrappingservice.model.Brand;
 import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.model.ScrappingDateLog;
 import ru.vakoom.scrappingservice.model.Type;
+import ru.vakoom.scrappingservice.repository.BrandRepository;
 import ru.vakoom.scrappingservice.repository.OfferRepository;
 import ru.vakoom.scrappingservice.repository.ScrappingDateLogRepository;
 import ru.vakoom.scrappingservice.repository.TypeRepository;
@@ -30,6 +32,8 @@ public abstract class Scrapper implements InitializingBean {
     protected ScrappingDateLogRepository scrappingDateLogRepository;
     @Autowired
     protected TypeRepository typeRepository;
+    @Autowired
+    protected BrandRepository brandRepository;
 
     protected ScrapperMeta scrapperMeta;
 
@@ -99,8 +103,7 @@ public abstract class Scrapper implements InitializingBean {
         for (ScrapperMeta.ElementChain elementChain : meta.getElementChainList()) {
             switch (elementChain.getProductField()) {
                 case "name" -> offer.setName(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
-                //ToDo + завести таблицу брэнд, и проверять имя на содержание брэнда в нем
-                case "brand" -> offer.setBrand(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                case "brand" -> offer.setBrand(getBrandName(startElement, elementChain.getHtmlLocationChain(), offer.getName()));
                 case "price" -> offer.setPrice(parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())));
                 case "inStore" -> offer.setInStore(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()).equalsIgnoreCase("купить")
                         || scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()).contains("InStock"));
@@ -112,6 +115,19 @@ public abstract class Scrapper implements InitializingBean {
         offer.setAge(getAgeFromOfferName(offer.getName()));
         log.info(offer.toString());
         return offer;
+    }
+
+    private String getBrandName(Element element, List<ScrapperMeta.HtmlLocation> htmlLocationChain, String modelName) {
+        String brandName = scrapperService.getElementByChain(element, htmlLocationChain);
+        if (brandName == null || brandName.isBlank()) {
+            List<Brand> brands = brandRepository.findAll();
+            brandName = brands.stream()
+                    .filter(b -> modelName.toUpperCase().contains(b.getShortName().toUpperCase()))
+                    .findAny()
+                    .map(Brand::getShortName)
+                    .orElse("");
+        }
+        return brandName;
     }
 
     private String getAgeFromOfferName(String offerName) {
