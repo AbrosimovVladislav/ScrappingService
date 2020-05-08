@@ -72,7 +72,7 @@ public enum HtmlObjectType {
         } else if (value.equalsIgnoreCase(FINDELEMENTBYATTRWITHVALUEANDGETATTR.toString())) {
             return FINDELEMENTBYATTRWITHVALUEANDGETATTR;
         } else {
-            log.error("HtmlChainParam with that name pipiska");
+            log.error("There is no HtmlObject type like: {}", value);
             return CLASS;
         }
     }

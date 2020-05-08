@@ -34,7 +34,6 @@ public abstract class Scrapper implements InitializingBean {
     protected ScrapperMeta scrapperMeta;
 
     public List<Offer> fullCatalog() {
-        //ToDo если из скрапа придет пустой список, он не должен дойти до агрегатора. Лучше сохранить старые данные чем пустоту
         List<ScrapperMeta.MenuItem> menuItemUrls = new ArrayList<>(scrapperMeta.getMenuItems());
         //ToDo подумать как убрать в аннотации
         ScrappingDateLog scrappingDateLog = new ScrappingDateLog();
@@ -75,11 +74,13 @@ public abstract class Scrapper implements InitializingBean {
         log.info("Category {} has {} pages", type.getShowName(), pages);
 
         //Range takes form first page to last not inclusive. That is why using +1s
-        return IntStream.range(1, pages + 1)
+        List<Offer> offersToSend = IntStream.range(1, pages + 1)
                 .mapToObj(i -> menuItem.getUrl() + scrapperMeta.getPaginatorParam() + i)
                 .map(url -> productsPage(url, type))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
+        if (offersToSend.isEmpty()) log.error("This category {} has no offers inside", categoryDoc);
+        return offersToSend;
     }
 
     public abstract Integer defineCountOfPages(Document fullCategoryDoc);
