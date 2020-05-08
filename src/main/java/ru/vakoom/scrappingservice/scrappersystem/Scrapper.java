@@ -53,22 +53,20 @@ public abstract class Scrapper implements InitializingBean {
     }
 
     private List<Offer> category(ScrapperMeta.MenuItem menuItem) {
-        Document categoryDoc;
-        try {
-            categoryDoc = Jsoup.connect(menuItem.getUrl()).get();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Optional<Document> categoryDoc = getDocByUrl(menuItem.getUrl());
+        if (categoryDoc.isEmpty()) {
             return Collections.emptyList();
         }
 
-        Integer pages = defineCountOfPages(categoryDoc);
+        Integer pages = defineCountOfPages(categoryDoc.get());
 
         Type type;
         Optional<Type> optionalType = typeRepository.findById(menuItem.getTypeId());
         if (optionalType.isPresent()) {
             type = optionalType.get();
         } else {
-            throw new RuntimeException("There is no such type id " + menuItem.getTypeId());
+            log.error("There is no such type id: {}", menuItem.getTypeId());
+            return Collections.emptyList();
         }
 
         log.info("Category {} has {} pages", type.getShowName(), pages);
@@ -79,22 +77,19 @@ public abstract class Scrapper implements InitializingBean {
                 .map(url -> productsPage(url, type))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
-        if (offersToSend.isEmpty()) log.error("This category {} has no offers inside", categoryDoc);
+        if (offersToSend.isEmpty()) log.error("This category {} has no offers inside", categoryDoc.get());
         return offersToSend;
     }
 
     public abstract Integer defineCountOfPages(Document fullCategoryDoc);
 
     private List<Offer> productsPage(String pageUrl, Type type) {
-        Document doc;
-        try {
-            doc = Jsoup.connect(pageUrl).get();
-        } catch (IOException e) {
-            e.printStackTrace();
+        Optional<Document> productPageDoc = getDocByUrl(pageUrl);
+        if (productPageDoc.isEmpty()) {
             return Collections.emptyList();
         }
 
-        Elements products = scrapperService.getElementsByClass(doc, scrapperMeta.getRootElement().getName());
+        Elements products = scrapperService.getElementsByClass(productPageDoc.get(), scrapperMeta.getRootElement().getName());
         return products.stream().map(catalogItem -> createOfferFromMeta(catalogItem, scrapperMeta, type))
                 .collect(Collectors.toList());
     }
@@ -160,5 +155,14 @@ public abstract class Scrapper implements InitializingBean {
         price = price.replaceAll(onlyDoubleRegex, "");
         price = price.replace(",", ".");
         return Double.parseDouble(price);
+    }
+
+    private Optional<Document> getDocByUrl(String url) {
+        try {
+            return Optional.of(Jsoup.connect(url).get());
+        } catch (IOException e) {
+            log.error("{} url: {}", e.getMessage(), url);
+            return Optional.empty();
+        }
     }
 }
