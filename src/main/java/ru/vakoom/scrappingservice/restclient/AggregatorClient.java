@@ -7,24 +7,24 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.vakoom.scrappingservice.model.Offer;
+import ru.vakoom.scrappingservice.model.Brand;
 
 import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class MatchingServiceClient {
+public class AggregatorClient {
 
-    public static final String MATCHING_SERVICE_BASE_PATH = "http://localhost:8081";
-    public static final String MATCHING_SERVICE_RECEIVE_OFFERS_PATH = "/receiveOffers";
+    public static final String MATCHING_SERVICE_BASE_PATH = "http://localhost:8082";
+    public static final String MATCHING_SERVICE_SEND_BRANDS_PATH = "/brands";
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public ResponseEntity<List<Offer>> sendOffers(List<Offer> offers) {
-        String url = MATCHING_SERVICE_BASE_PATH + MATCHING_SERVICE_RECEIVE_OFFERS_PATH;
+    public ResponseEntity<List<Brand>> receiveBrands() {
+        String url = MATCHING_SERVICE_BASE_PATH + MATCHING_SERVICE_SEND_BRANDS_PATH;
         return restTemplate.exchange(url,
-                HttpMethod.POST,
-                new HttpEntity<>(offers),
+                HttpMethod.GET,
+                HttpEntity.EMPTY,
                 new ParameterizedTypeReference<>() {
                 });
     }
