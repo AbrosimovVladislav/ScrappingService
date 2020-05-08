@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class ScrapperService {
@@ -30,13 +29,6 @@ public class ScrapperService {
 
     public Elements getElementsByClass(Document doc, String className) {
         return doc.getElementsByClass(className);
-    }
-
-    //ToDo убрать, переделать через общий алгортим (LinkedHashMap)
-    public List<String> getElementValueByClassAndAttribute(Document doc, String className) {
-        return doc.getElementsByClass(className).stream()
-                .map(element -> element.attr("href"))
-                .collect(Collectors.toList());
     }
 
 }

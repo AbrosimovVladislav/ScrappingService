@@ -3,7 +3,6 @@ package ru.vakoom.scrappingservice.scrappersystem;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import ru.vakoom.scrappingservice.model.Type;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -71,7 +70,6 @@ public class ScrapperMeta {
         private String url;
         private Long typeId;
     }
-
 
     public static ScrapperMeta fromJson(String path) {
         try {

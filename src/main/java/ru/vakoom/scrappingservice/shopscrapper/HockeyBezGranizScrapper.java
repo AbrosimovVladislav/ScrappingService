@@ -8,12 +8,10 @@ import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 
-import javax.annotation.PostConstruct;
-
 @Slf4j
 @Service
 public class HockeyBezGranizScrapper extends Scrapper {
-    @PostConstruct
+
     public void afterPropertiesSet() {
         scrapperMeta = ScrapperMeta.fromJson("src/main/resources/web-shop-config/hockeybezgranic.json");
     }
