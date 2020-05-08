@@ -230,42 +230,6 @@
       ]
     },
     {
-      "productField": "shopName",
-      "htmlLocationChain": [
-        {
-          "name": "",
-          "htmlObjectType": ""
-        }
-      ]
-    },
-    {
-      "productField": "category",
-      "htmlLocationChain": [
-        {
-          "name": "",
-          "htmlObjectType": ""
-        }
-      ]
-    },
-    {
-      "productField": "type",
-      "htmlLocationChain": [
-        {
-          "name": "",
-          "htmlObjectType": ""
-        }
-      ]
-    },
-    {
-      "productField": "age",
-      "htmlLocationChain": [
-        {
-          "name": "",
-          "htmlObjectType": ""
-        }
-      ]
-    },
-    {
       "productField": "link",
       "htmlLocationChain": [
         {

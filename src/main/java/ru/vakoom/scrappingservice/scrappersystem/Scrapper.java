@@ -113,21 +113,14 @@ public abstract class Scrapper implements InitializingBean {
                             scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
                                     .contains("InStock"));
                     break;
-                //ToDo выпилить из json не заполняемые в нем параметры
-                case "type":
-                    offer.setType(type);
-                    break;
-                case "shopName":
-                    offer.setShopName(scrapperMeta.getShopName());
-                    break;
                 case "link":
                     offer.setLink(scrapperMeta.getBasePath() + scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
                     break;
-                case "age":
-                    offer.setAge(getAgeFromOfferName(offer.getName())); // depends on case name
-                    break;
             }
         }
+        offer.setShopName(scrapperMeta.getShopName());
+        offer.setType(type);
+        offer.setAge(getAgeFromOfferName(offer.getName()));
         log.info(offer.toString());
         return offer;
     }
