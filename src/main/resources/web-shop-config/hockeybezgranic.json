@@ -1,7 +1,7 @@
 {
   "basePath": "https://hockeybezgranic.ru",
   "shopName": "HOCKEYBEZGRANIC",
-  "paginatorParam": "?PAGEN_1=",
+  "paginatorParam": "PAGEN_1=",
   "menuItems": [
     {
       "url": "https://hockeybezgranic.ru/catalog/konki/konki-khokkeynye/",

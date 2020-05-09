@@ -77,12 +77,16 @@ public abstract class Scrapper implements InitializingBean {
 
         //Range takes form first page to last not inclusive. That is why using +1s
         List<Offer> offersToSend = IntStream.range(1, pages + 1)
-                .mapToObj(i -> menuItem.getUrl() + scrapperMeta.getPaginatorParam() + i)
+                .mapToObj(i -> addPaginationToUrl(menuItem.getUrl(), scrapperMeta.getPaginatorParam()) + i)
                 .map(url -> productsPage(url, type))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
         if (offersToSend.isEmpty()) log.error("This category {} has no offers inside", categoryDoc.get());
         return offersToSend;
+    }
+
+    private String addPaginationToUrl(String url, String paginator) {
+        return url.contains("?") ? url + "&" + paginator : url + "?" + paginator;
     }
 
     public abstract Integer defineCountOfPages(Document fullCategoryDoc);

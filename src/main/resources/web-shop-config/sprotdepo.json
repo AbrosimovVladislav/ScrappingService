@@ -1,7 +1,7 @@
 {
   "basePath": "https://www.sportdepo.ru/",
   "shopName": "SPORTDEPO",
-  "paginatorParam": "?shops=%5B80%5D%5B12%5D%5B28%5D&page=",
+  "paginatorParam": "page=",
   "menuItems": [
     {
       "url": "https://www.sportdepo.ru/catalog/name/Price/id/23016/",
