@@ -1,8 +1,8 @@
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (1,
-        'ЗАЩИТА_ИГРОКА',
-        'ЗАЩИТА_ПАХА',
-        'Защита паха')
+        'КОНЬКИ',
+        'КОНЬКИ_ХОККЕЙНЫЕ',
+        'Коньки')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
@@ -18,24 +18,15 @@ ON CONFLICT (type_id) DO UPDATE
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (3,
-        'КОНЬКИ',
-        'КОНЬКИ_ФИГУРНЫЕ',
-        'Коньки фигурные')
+        'ЗАЩИТА_ИГРОКА',
+        'НАГРУДНИКИ',
+        'Нагрудник')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (4,
-        'ЗАЩИТА_ИГРОКА',
-        'НАГРУДНИКИ',
-        'Нагрудники')
-ON CONFLICT (type_id) DO UPDATE
-    SET upper     = excluded.upper,
-        medium    = excluded.medium,
-        show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (5,
         'ЗАЩИТА_ИГРОКА',
         'ЩИТКИ',
         'Щитки')
@@ -44,7 +35,7 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (6,
+VALUES (5,
         'ЗАЩИТА_ИГРОКА',
         'ШЛЕМ',
         'Шлем')
@@ -53,16 +44,16 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (7,
-        'КОНЬКИ',
-        'КОНЬКИ_ХОККЕЙНЫЕ',
-        'Коньки хоккейные')
+VALUES (6,
+        'ЗАЩИТА_ИГРОКА',
+        'ЗАЩИТА_ПАХА',
+        'Защита паха')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (8,
+VALUES (7,
         'ЗАЩИТА_ИГРОКА',
         'НАЛОКОТНИКИ',
         'Налокотники')
@@ -71,7 +62,7 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (9,
+VALUES (8,
         'ЗАЩИТА_ИГРОКА',
         'ТРУСЫ',
         'Трусы')
@@ -80,16 +71,16 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (10,
+VALUES (9,
         'ЗАЩИТА_ИГРОКА',
         'ВИЗОРЫ_И_МАСКИ',
-        'Визоры и маски')
+        'Визор/Маска')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (11,
+VALUES (10,
         'ЗАЩИТА_ИГРОКА',
         'ЗАЩИТА_ШЕИ',
         'Защита шеи')
@@ -98,7 +89,7 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (12,
+VALUES (11,
         'ЗАЩИТА_ИГРОКА',
         'ПЕРЧАТКИ',
         'Перчатки')
@@ -107,7 +98,7 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (13,
+VALUES (12,
         'ЗАЩИТА_ИГРОКА',
         'ЗАЩИТА_ЗАПЯСТЬЯ',
         'Защита запястья')
@@ -116,10 +107,19 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (14,
+VALUES (13,
         'КЛЮШКИ',
         'ИГРОКА',
-        'Клюшки игрока')
+        'Клюшка')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, show_name)
+VALUES (14,
+        'КЛЮШКИ',
+        'ВРАТАРЯ',
+        'Вратарская клюшка')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
@@ -127,14 +127,23 @@ ON CONFLICT (type_id) DO UPDATE
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (15,
         'КЛЮШКИ',
-        'ВРАТАРЯ',
-        'Вратарские клюшки')
+        'ТРУБЫ',
+        'Труба')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (16,
+        'КЛЮШКИ',
+        'КРЮКИ',
+        'Крюк')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, show_name)
+VALUES (17,
         'ОДЕЖДА',
         'ГАМАШИ',
         'Гамаши')
@@ -143,16 +152,16 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (17,
+VALUES (18,
         'ОДЕЖДА',
         'ТРЕНИРОВОЧНЫЕ_МАЙКИ',
-        'Тренировочные майки')
+        'Хоккейная майка')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (18,
+VALUES (19,
         'ОДЕЖДА',
         'НАТЕЛЬНОЕ_БЕЛЬЕ',
         'Нательное белье')
@@ -161,19 +170,10 @@ ON CONFLICT (type_id) DO UPDATE
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
-VALUES (19,
-        'ВРАТАРСКАЯ_ФОРМА',
-        'НАГРУДНИКИ',
-        'Вратаские нагрудники')
-ON CONFLICT (type_id) DO UPDATE
-    SET upper     = excluded.upper,
-        medium    = excluded.medium,
-        show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (20,
         'ВРАТАРСКАЯ_ФОРМА',
-        'ТРУСЫ',
-        'Вратарские трусы')
+        'НАГРУДНИКИ',
+        'Нагрудник вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
@@ -181,8 +181,8 @@ ON CONFLICT (type_id) DO UPDATE
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (21,
         'ВРАТАРСКАЯ_ФОРМА',
-        'КОНЬКИ',
-        'Вратарские коньки')
+        'ТРУСЫ',
+        'Трусы вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
@@ -190,8 +190,8 @@ ON CONFLICT (type_id) DO UPDATE
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (22,
         'ВРАТАРСКАЯ_ФОРМА',
-        'ЩИТКИ',
-        'Вратарские щитки')
+        'КОНЬКИ',
+        'Коньки вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
@@ -199,8 +199,8 @@ ON CONFLICT (type_id) DO UPDATE
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (23,
         'ВРАТАРСКАЯ_ФОРМА',
-        'ШЛЕМА_И_МАСКИ',
-        'Вратарские шлема')
+        'ЩИТКИ',
+        'Щитки вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
@@ -208,8 +208,8 @@ ON CONFLICT (type_id) DO UPDATE
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (24,
         'ВРАТАРСКАЯ_ФОРМА',
-        'БЛИН_И_ЛОВУШКА',
-        'Блин и ловушка')
+        'ШЛЕМА',
+        'Шлем вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
@@ -217,95 +217,214 @@ ON CONFLICT (type_id) DO UPDATE
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (25,
         'ВРАТАРСКАЯ_ФОРМА',
-        'АКСЕССУАРЫ',
-        'Аксессуары для вратарей')
+        'БЛИН_И_ЛОВУШКА',
+        'Блин/ловушка вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, medium, show_name)
+INSERT INTO type (type_id, upper, medium, lower, show_name)
 VALUES (26,
-        'СУМКИ',
-        'СУМКИ_ХОККЕЙНЫЕ',
-        'Сумки хоккейные')
+        'ВРАТАРСКАЯ_ФОРМА',
+        'АКСЕССУАРЫ',
+        'ЗАЩИТА_ШЕИ',
+        'Защита шеи вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, medium, show_name)
+INSERT INTO type (type_id, upper, medium, lower, show_name)
 VALUES (27,
-        'СУМКИ',
-        'СУМКИ_ВРАТАРЯ',
-        'Сумки вратаря')
+        'ВРАТАРСКАЯ_ФОРМА',
+        'АКСЕССУАРЫ',
+        'ЗАЩИТА_ГОРЛА',
+        'Защита горла вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, medium, show_name)
+INSERT INTO type (type_id, upper, medium, lower, show_name)
 VALUES (28,
-        'СУМКИ',
-        'СУМКИ_ДЛЯ_ПРИНАДЛЕЖНОСТЕЙ',
-        'Сумки для принадлежностей')
+        'ВРАТАРСКАЯ_ФОРМА',
+        'АКСЕССУАРЫ',
+        'ЗАЩИТА_ПАХА',
+        'Защита паха вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, medium, show_name)
+INSERT INTO type (type_id, upper, medium, lower, show_name)
 VALUES (29,
+        'ВРАТАРСКАЯ_ФОРМА',
         'АКСЕССУАРЫ',
-        'АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ',
-        'Аксессуары для коньков')
+        'ЗАЩИТА_КОЛЕНЕЙ',
+        'Защита коленей вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, medium, show_name)
+INSERT INTO type (type_id, upper, medium, lower, show_name)
 VALUES (30,
+        'ВРАТАРСКАЯ_ФОРМА',
         'АКСЕССУАРЫ',
-        'АКСЕССУАРЫ_ДЛЯ_ШЛЕМА',
-        'Аксессуары для шлема')
+        'ПОЯС_ВРАТАРЯ',
+        'Пояс вратаря')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (31,
-        'АКСЕССУАРЫ',
-        'АКСЕССУАРЫ_ДЛЯ_КЛЮШЕК',
-        'Аксессуары для клюшек')
+        'СУМКИ',
+        'СУМКИ_ХОККЕЙНЫЕ',
+        'Сумка хоккейная')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
 INSERT INTO type (type_id, upper, medium, show_name)
 VALUES (32,
+        'СУМКИ',
+        'СУМКИ_ДЛЯ_ПРИНАДЛЕЖНОСТЕЙ',
+        'Сумка для принадлежностей')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (33,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ',
+        'ЧЕХЛЫ',
+        'Чехлы')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (34,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ',
+        'ЛЕЗВИЯ',
+        'Лезвия')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (35,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ',
+        'СТАКАНЫ',
+        'Стаканы')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (36,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_КОНЬКОВ',
+        'ШНУРКИ',
+        'Шнурки')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (37,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_ШЛЕМА',
+        'ЗАПЧАСТИ',
+        'Запчасти для шлема')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (38,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_ШЛЕМА',
+        'АНТИФОГ',
+        'Антифог')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (39,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_ШЛЕМА',
+        'ПОДШЛЕМНИКИ',
+        'Подшлемник')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (40,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_КЛЮШЕК',
+        'ЛЕНТА',
+        'Лента')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (41,
         'АКСЕССУАРЫ',
         'АКСЕССУАРЫ_ДЛЯ_ИГРОКА',
-        'Аксессуары для игрока')
+        'БУТЫЛКИ',
+        'Бутылка')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, show_name)
-VALUES (33,
-        'ХОККЕЙНАЯ_ШАЙБА',
-        'Хоккейная шайба')
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (42,
+        'АКСЕССУАРЫ',
+        'АКСЕССУАРЫ_ДЛЯ_ИГРОКА',
+        'ПОЯСА_И_ПОДТЯЖКИ',
+        'Пояс/Подтяжки')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, show_name)
-VALUES (34,
-        'ХОККЕЙНЫЕ_ВОРОТА',
-        'Хоккейные ворота')
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (43,
+        'АКСЕССУАРЫ',
+        'ШАЙБЫ_И_МЯЧИ',
+        'ШАЙБЫ',
+        'Шайба')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
         show_name = excluded.show_name;;
-INSERT INTO type (type_id, upper, show_name)
-VALUES (35,
+INSERT INTO type (type_id, upper, medium, lower, show_name)
+VALUES (44,
+        'АКСЕССУАРЫ',
+        'ШАЙБЫ_И_МЯЧИ',
+        'МЯЧИ',
+        'Мяч')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, show_name)
+VALUES (45,
+        'АКСЕССУАРЫ',
+        'ВОРОТА',
+        'Ворота')
+ON CONFLICT (type_id) DO UPDATE
+    SET upper     = excluded.upper,
+        medium    = excluded.medium,
+        show_name = excluded.show_name;;
+INSERT INTO type (type_id, upper, medium, show_name)
+VALUES (46,
         'РАЗНОЕ',
-        'Разное')
+        'ДОСКИ_ТАКТИЧЕСКИЕ',
+        'Доска тактическая')
 ON CONFLICT (type_id) DO UPDATE
     SET upper     = excluded.upper,
         medium    = excluded.medium,
