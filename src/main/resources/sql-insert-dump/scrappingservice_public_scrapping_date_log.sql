@@ -1,0 +1,8 @@
+INSERT INTO public.scrapping_date_log (stat_id, count_of_records, date_of_scrap, shop_name, time_of_scrapping) VALUES (19, 761, '2020-05-05 18:57:28.728000', 'HOCKEYBEZGRANIC', 87413);
+INSERT INTO public.scrapping_date_log (stat_id, count_of_records, date_of_scrap, shop_name, time_of_scrapping) VALUES (20, 1026, '2020-05-05 18:58:56.152000', 'SPORTDEPO', 9882);
+INSERT INTO public.scrapping_date_log (stat_id, count_of_records, date_of_scrap, shop_name, time_of_scrapping) VALUES (21, 761, '2020-05-05 19:02:58.289000', 'HOCKEYBEZGRANIC', 97486);
+INSERT INTO public.scrapping_date_log (stat_id, count_of_records, date_of_scrap, shop_name, time_of_scrapping) VALUES (22, 1026, '2020-05-05 19:04:35.783000', 'SPORTDEPO', 9579);
+INSERT INTO public.scrapping_date_log (stat_id, count_of_records, date_of_scrap, shop_name, time_of_scrapping) VALUES (23, 761, '2020-05-05 19:07:35.207000', 'HOCKEYBEZGRANIC', 93096);
+INSERT INTO public.scrapping_date_log (stat_id, count_of_records, date_of_scrap, shop_name, time_of_scrapping) VALUES (24, 1026, '2020-05-05 19:09:08.306000', 'SPORTDEPO', 10265);
+INSERT INTO public.scrapping_date_log (stat_id, count_of_records, date_of_scrap, shop_name, time_of_scrapping) VALUES (25, 761, '2020-05-05 19:11:53.943000', 'HOCKEYBEZGRANIC', 87513);
+INSERT INTO public.scrapping_date_log (stat_id, count_of_records, date_of_scrap, shop_name, time_of_scrapping) VALUES (26, 1026, '2020-05-05 19:13:21.458000', 'SPORTDEPO', 10333);
