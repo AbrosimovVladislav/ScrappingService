@@ -106,12 +106,32 @@ public abstract class Scrapper implements InitializingBean {
         Offer offer = new Offer();
         for (ScrapperMeta.ElementChain elementChain : meta.getElementChainList()) {
             switch (elementChain.getProductField()) {
-                case "name" -> offer.setName(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
-                case "brand" -> offer.setBrand(getBrandName(startElement, elementChain.getHtmlLocationChain(), offer.getName()));
-                case "price" -> offer.setPrice(parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())));
-                case "inStore" -> offer.setInStore(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()).equalsIgnoreCase("купить")
-                        || scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()).contains("InStock"));
-                case "link" -> offer.setLink(scrapperMeta.getBasePath() + scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()));
+                case "name":
+                    offer.setName(
+                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                    );
+                    break;
+                case "brand":
+                    offer.setBrand(getBrandName(startElement, elementChain.getHtmlLocationChain(), offer.getName()));
+                    break;
+                case "price":
+                    offer.setPrice(
+                        parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()))
+                    );
+                    break;
+                case "inStore":
+                    offer.setInStore(
+                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                            .equalsIgnoreCase("купить") ||
+                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                            .contains("InStock")
+                    );
+                    break;
+                case "link":
+                    offer.setLink(
+                        scrapperMeta.getBasePath() + scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                    );
+                    break;
             }
         }
         offer.setShopName(scrapperMeta.getShopName());
