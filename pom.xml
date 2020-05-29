@@ -18,7 +18,7 @@
 
     <properties>
         <project.source.buildEncoding>UTF-8</project.source.buildEncoding>
-        <java.version>14</java.version>
+        <java.version>11</java.version>
         <postgres.version>42.2.6</postgres.version>
     </properties>
 
@@ -83,7 +83,6 @@
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                     <release>${java.version}</release>
-                    <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
