@@ -3,6 +3,7 @@ package ru.vakoom.scrappingservice.scrappersystem;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -73,12 +74,11 @@ public class ScrapperMeta {
 
     public static ScrapperMeta fromJson(String path) {
         try {
-            return new ObjectMapper().readValue(Paths.get(path).toFile(), ScrapperMeta.class);
+            return new ObjectMapper().readValue(new ClassPathResource(path).getInputStream(), ScrapperMeta.class);
         } catch (IOException e) {
             log.error("Converting of json to scrapper meta failed. Failed file path: {}", path);
             log.error(e.toString());
             throw new UncheckedIOException(e);
         }
     }
-
 }

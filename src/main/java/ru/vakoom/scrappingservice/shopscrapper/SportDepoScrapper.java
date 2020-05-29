@@ -15,8 +15,8 @@ import javax.annotation.PostConstruct;
 @Service
 public class SportDepoScrapper extends Scrapper {
     @PostConstruct
-    public void afterPropertiesSet() throws Exception {
-        scrapperMeta = ScrapperMeta.fromJson("src/main/resources/web-shop-config/sprotdepo.json");
+    public void afterPropertiesSet() {
+        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/sprotdepo.json");
     }
 
     @Override
@@ -31,6 +31,4 @@ public class SportDepoScrapper extends Scrapper {
                 .mapToInt(Integer::parseInt)
                 .max().getAsInt();
     }
-
-
 }

@@ -13,7 +13,7 @@ import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 public class HockeyBezGranizScrapper extends Scrapper {
 
     public void afterPropertiesSet() {
-        scrapperMeta = ScrapperMeta.fromJson("src/main/resources/web-shop-config/hockeybezgranic.json");
+        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/hockeybezgranic.json");
     }
 
     @Override
