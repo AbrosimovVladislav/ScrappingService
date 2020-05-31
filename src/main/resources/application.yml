@@ -9,7 +9,7 @@ spring:
     initialization-mode: always
     separator: ;;
   jpa:
-    show-sql: true
+    #    show-sql: true
     database: postgresql
     hibernate:
       ddl-auto: update
