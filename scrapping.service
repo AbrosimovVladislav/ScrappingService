@@ -1,0 +1,10 @@
+[Unit]
+Description=Scrapping Service
+
+[Service]
+WorkingDirectory=/opt/prod
+ExecStart=/usr/bin/java -Xms128m -Xmx256m -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/root -jar ScrappingService.jar
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
