@@ -1,0 +1,226 @@
+{
+  "basePath": "https://hock5.ru/",
+  "shopName": "HOCK5",
+  "paginatorParam": "page=",
+  "menuItems": [
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/konki-96/",
+      "typeId": 1
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/klyushki-95",
+      "typeId": 13
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/nagrudniki-97",
+      "typeId": 3
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/nalokotniki-98",
+      "typeId": 7
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/perchatki-99",
+      "typeId": 11
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/roliki-165",
+      "typeId": 2
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/sumki-100-100",
+      "typeId": 31
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/trusy-101-101",
+      "typeId": 8
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/shlemy-102-102",
+      "typeId": 5
+    },
+    {
+      "url": "https://hock5.ru/polevaya-ekipirovka-94/shchitki-103-103",
+      "typeId": 4
+    },
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/bliny-159",
+      "typeId": 25
+    },
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/lovushki-160",
+      "typeId": 25
+    },
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/konki-86-86",
+      "typeId": 22
+    },
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/nagrudniki-87-87",
+      "typeId": 20
+    },
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/sumki-89",
+      "typeId": 31
+    },
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/trusy-90",
+      "typeId": 21
+    },
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/shlemy-91",
+      "typeId": 24
+    },
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/shchitki-92",
+      "typeId": 23
+    },
+    {
+      "url": "https://hock5.ru/tekstil-104/bele-126",
+      "typeId": 19
+    },
+    {
+      "url": "https://hock5.ru/tekstil-104/gamashi-131",
+      "typeId": 17
+    },
+    {
+      "url": "https://hock5.ru/tekstil-104/reytuzy-137",
+      "typeId": 17
+    },
+    {
+      "url": "https://hock5.ru/tekstil-104/hokkeyki-143",
+      "typeId": 18
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/bandazhi-146",
+      "typeId": 6
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/zashchita-shei-148",
+      "typeId": 26
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/lezviya-149",
+      "typeId": 34
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/maskivizory-158",
+      "typeId": 9
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/podtyazhki-115",
+      "typeId": 42
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/stakany-151",
+      "typeId": 35
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/chehly-116",
+      "typeId": 33
+    }
+  ],
+  "rootElement": {
+    "name": "product-thumb transition  options ",
+    "htmlObjectType": "class"
+  },
+  "elementChainList": [
+    {
+      "productField": "name",
+      "htmlLocationChain": [
+        {
+          "name": "name",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "a",
+          "htmlObjectType": "lasttag"
+        }
+      ]
+    },
+    {
+      "productField": "brand",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "price",
+      "htmlLocationChain": [
+        {
+          "name": "price",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "inStore",
+      "htmlLocationChain": [
+        {
+          "name": "product-btn-add",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "span",
+          "htmlObjectType": "lasttag"
+        }
+      ]
+    },
+    {
+      "productField": "shopName",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "category",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "type",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "age",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "link",
+      "htmlLocationChain": [
+        {
+          "name": "name",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "a",
+          "htmlObjectType": "tag"
+        },
+        {
+          "name": "href",
+          "htmlObjectType": "attr"
+        }
+      ]
+    }
+  ]
+}
