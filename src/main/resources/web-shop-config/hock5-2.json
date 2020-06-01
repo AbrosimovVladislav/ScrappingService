@@ -1,0 +1,126 @@
+{
+  "basePath": "https://hock5.ru/",
+  "shopName": "HOCK5",
+  "paginatorParam": "page=",
+  "menuItems": [
+    {
+      "url": "https://hock5.ru/vratarskaya-ekipirovka-83/klyushki-85-85",
+      "typeId": 14
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/butylki-112",
+      "typeId": 41
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/lenty-114",
+      "typeId": 40
+    },
+    {
+      "url": "https://hock5.ru/aksessuary-82-82/shnurki-118",
+      "typeId": 36
+    }
+  ],
+  "rootElement": {
+    "name": "product-thumb transition ",
+    "htmlObjectType": "class"
+  },
+  "elementChainList": [
+    {
+      "productField": "name",
+      "htmlLocationChain": [
+        {
+          "name": "name",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "a",
+          "htmlObjectType": "lasttag"
+        }
+      ]
+    },
+    {
+      "productField": "brand",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "price",
+      "htmlLocationChain": [
+        {
+          "name": "price",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "inStore",
+      "htmlLocationChain": [
+        {
+          "name": "product-btn-add",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "span",
+          "htmlObjectType": "lasttag"
+        }
+      ]
+    },
+    {
+      "productField": "shopName",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "category",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "type",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "age",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "link",
+      "htmlLocationChain": [
+        {
+          "name": "name",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "a",
+          "htmlObjectType": "tag"
+        },
+        {
+          "name": "href",
+          "htmlObjectType": "attr"
+        }
+      ]
+    }
+  ]
+}
