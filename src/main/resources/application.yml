@@ -20,4 +20,4 @@ spring:
         format_sql: true
 logging:
   file:
-    name: app.log
+    name: scrapping-app.log
