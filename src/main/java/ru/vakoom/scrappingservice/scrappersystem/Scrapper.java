@@ -120,12 +120,16 @@ public abstract class Scrapper implements InitializingBean {
                     );
                     break;
                 case "inStore":
-                    offer.setInStore(
-                            scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
-                                    .equalsIgnoreCase("купить") ||
-                                    scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
-                                            .contains("InStock")
-                    );
+                    if (offer.getPrice() == 0D || offer.getPrice() == 0) {
+                        offer.setInStore(false);
+                    } else {
+                        offer.setInStore(
+                                scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                                        .equalsIgnoreCase("купить") ||
+                                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                                                .contains("InStock")
+                        );
+                    }
                     break;
                 case "link":
                     if (scrapperMeta.getShopName().equalsIgnoreCase("HOCK5")) {
