@@ -73,7 +73,7 @@ public abstract class Scrapper implements InitializingBean {
             return Collections.emptyList();
         }
 
-        if(pages==0){
+        if (pages == 0) {
             log.info("Category {} has {} pages. No offers here", type.getShowName(), pages);
             return Collections.emptyList();
         }
@@ -121,7 +121,7 @@ public abstract class Scrapper implements InitializingBean {
                     break;
                 case "price":
                     offer.setPrice(
-                            parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName()+"price"))
+                            parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price"))
                     );
                     break;
                 case "inStore":
@@ -208,6 +208,9 @@ public abstract class Scrapper implements InitializingBean {
 
     private Optional<Document> getDocByUrl(String url) {
         try {
+            if (url.contains("forma")) {
+                return Optional.of(Jsoup.connect(url).userAgent("Mozilla").get());
+            }
             return Optional.of(Jsoup.connect(url).get());
         } catch (IOException e) {
             log.error("{} url: {}", e.getMessage(), url);
