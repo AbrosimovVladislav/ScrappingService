@@ -10,19 +10,23 @@ import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 
 @Slf4j
-//@Service
-public class FormaSpbScrapper extends Scrapper {
+@Service
+public class KlushkiScrapper extends Scrapper {
 
     public void afterPropertiesSet() {
-        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/formaspb.json");
+        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/klushki.json");
     }
 
     @Override
     public Integer defineCountOfPages(Document fullCategoryDoc) {
+        if(scrapperMeta.getShopName().equalsIgnoreCase("KLUSHKI")){
+            return 1;
+        }
+
         if(!fullCategoryDoc.getElementsByClass("wrap_text_empty").isEmpty()){
             return 0;
         }
-        Elements paginationElements = fullCategoryDoc.getElementsByClass("module-pagination");
+        Elements paginationElements = fullCategoryDoc.getElementsByClass("nums");
         if (paginationElements.isEmpty()) {
             return 1;
         }

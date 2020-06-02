@@ -82,7 +82,7 @@ public abstract class Scrapper implements InitializingBean {
 
         //Range takes form first page to last not inclusive. That is why using +1s
         List<Offer> offersToSend = IntStream.range(1, pages + 1)
-                .mapToObj(i -> addPaginationToUrl(menuItem.getUrl(), scrapperMeta.getPaginatorParam()) + i)
+                .mapToObj(i -> addPaginationToUrl(menuItem.getUrl(), scrapperMeta.getPaginatorParam(), i))
                 .map(url -> productsPage(url, type))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
@@ -90,8 +90,11 @@ public abstract class Scrapper implements InitializingBean {
         return offersToSend;
     }
 
-    private String addPaginationToUrl(String url, String paginator) {
-        return url.contains("?") ? url + "&" + paginator : url + "?" + paginator;
+    private String addPaginationToUrl(String url, String paginator, Integer pageNumber) {
+        if(scrapperMeta.getShopName().equalsIgnoreCase("KLUSHKI")){
+            return url;
+        }
+        return url.contains("?") ? url + "&" + paginator + pageNumber : url + "?" + paginator + pageNumber;
     }
 
     public abstract Integer defineCountOfPages(Document fullCategoryDoc);
@@ -134,6 +137,8 @@ public abstract class Scrapper implements InitializingBean {
                                         scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                                                 .equalsIgnoreCase("Есть в наличии") ||
                                         scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
+                                                .equalsIgnoreCase("В корзину") ||
+                                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                                                 .contains("InStock") ||
                                         scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                                                 .equalsIgnoreCase("Много") ||
@@ -143,7 +148,7 @@ public abstract class Scrapper implements InitializingBean {
                     }
                     break;
                 case "link":
-                    if (scrapperMeta.getShopName().equalsIgnoreCase("HOCK5")) {
+                    if (scrapperMeta.getShopName().equalsIgnoreCase("HOCK5") || scrapperMeta.getShopName().equalsIgnoreCase("KLUSHKI")) {
                         offer.setLink(
                                 scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                         );
