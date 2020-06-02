@@ -1,0 +1,286 @@
+{
+  "basePath": "https://allhockey24.ru",
+  "shopName": "ALLHOCKEY",
+  "paginatorParam": "PAGEN_1=",
+  "menuItems": [
+    {
+      "url": "https://allhockey24.ru/catalog/konki/khokkeynye/",
+      "typeId": 1
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/konki/rolikovye/",
+      "typeId": 2
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/konki/konivratarskie/",
+      "typeId": 22
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/klyushki/kompozitnye/",
+      "typeId": 13
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/klyushki/truby_i_kryuki/",
+      "typeId": 15
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/klyushki/vratarskie/",
+      "typeId": 14
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/klyushki/derevyannye/",
+      "typeId": 13
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/nagrudniki/",
+      "typeId": 3
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/shchitki/",
+      "typeId": 4
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/shlema/",
+      "typeId": 5
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/nalokotniki/",
+      "typeId": 7
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/trusy/",
+      "typeId": 8
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/perchatki/",
+      "typeId": 11
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/vizory_i_maski/",
+      "typeId": 9
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/zashchita_shei/",
+      "typeId": 10
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/rakoviny/",
+      "typeId": 6
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/trenirovochnye_mayki/",
+      "typeId": 18
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/gamashi_i_reytuzy/",
+      "typeId": 17
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_igroka/natelnoe_bele/",
+      "typeId": 19
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/blin_i_lovushka/",
+      "typeId": 25
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/zashchita_gorla_/",
+      "typeId": 27
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/zashchita_shei_vr/",
+      "typeId": 26
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/nagrudniki_vr/",
+      "typeId": 20
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/nakolenniki/",
+      "typeId": 29
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/trusy_vr/",
+      "typeId": 21
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/shlem/",
+      "typeId": 24
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/shchetki/",
+      "typeId": 23
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/trenirovochnye_mayki_vr/",
+      "typeId": 18
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/zashchita_vratarya/natelnoe_belye_vr/",
+      "typeId": 19
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/sumki/sumki_na_kolesakh/",
+      "typeId": 31
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/sumki/sumki_bez_koles/",
+      "typeId": 31
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/sumki/sumki_vratarskie/",
+      "typeId": 31
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/antifog/",
+      "typeId": 38
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/butylki/",
+      "typeId": 41
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/doska_trenera/",
+      "typeId": 46
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/lezviya_i_stakany/",
+      "typeId": 34
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/lenta/",
+      "typeId": 40
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/myachiki/",
+      "typeId": 44
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/podtyazhki_i_poyasa/",
+      "typeId": 42
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/chekhly_dlya_konkov/",
+      "typeId": 33
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/shayby/",
+      "typeId": 43
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/shnurki/",
+      "typeId": 36
+    },
+    {
+      "url": "https://allhockey24.ru/catalog/aksessuary/dlya_shlema/",
+      "typeId": 37
+    }
+  ],
+  "rootElement": {
+    "name": "catalog_item item_wrap ",
+    "htmlObjectType": "class"
+  },
+  "elementChainList": [
+    {
+      "productField": "name",
+      "htmlLocationChain": [
+        {
+          "name": "item-title",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "span",
+          "htmlObjectType": "lasttag"
+        }
+      ]
+    },
+    {
+      "productField": "brand",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "price",
+      "htmlLocationChain": [
+        {
+          "name": "price discount",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "values_wrapper",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "inStore",
+      "htmlLocationChain": [
+        {
+          "name": "item-stock",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "value",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "shopName",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "category",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "type",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "age",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "link",
+      "htmlLocationChain": [
+        {
+          "name": "item-title",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "a",
+          "htmlObjectType": "tag"
+        },
+        {
+          "name": "href",
+          "htmlObjectType": "attr"
+        }
+      ]
+    }
+  ]
+}

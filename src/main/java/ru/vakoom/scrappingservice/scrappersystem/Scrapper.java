@@ -73,6 +73,11 @@ public abstract class Scrapper implements InitializingBean {
             return Collections.emptyList();
         }
 
+        if(pages==0){
+            log.info("Category {} has {} pages. No offers here", type.getShowName(), pages);
+            return Collections.emptyList();
+        }
+
         log.info("Category {} has {} pages", type.getShowName(), pages);
 
         //Range takes form first page to last not inclusive. That is why using +1s
@@ -108,15 +113,15 @@ public abstract class Scrapper implements InitializingBean {
             switch (elementChain.getProductField()) {
                 case "name":
                     offer.setName(
-                            scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                            scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                     );
                     break;
                 case "brand":
-                    offer.setBrand(getBrandName(startElement, elementChain.getHtmlLocationChain(), offer.getName()));
+                    offer.setBrand(getBrandName(startElement, elementChain.getHtmlLocationChain(), offer.getName(), scrapperMeta.getShopName()));
                     break;
                 case "price":
                     offer.setPrice(
-                            parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain()))
+                            parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName()+"price"))
                     );
                     break;
                 case "inStore":
@@ -124,21 +129,25 @@ public abstract class Scrapper implements InitializingBean {
                         offer.setInStore(false);
                     } else {
                         offer.setInStore(
-                                scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                                scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                                         .equalsIgnoreCase("купить") ||
-                                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
-                                                .contains("InStock")
+                                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
+                                                .contains("InStock") ||
+                                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
+                                                .equalsIgnoreCase("Много") ||
+                                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
+                                                .equalsIgnoreCase("Достаточно")
                         );
                     }
                     break;
                 case "link":
                     if (scrapperMeta.getShopName().equalsIgnoreCase("HOCK5")) {
                         offer.setLink(
-                                scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                                scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                         );
                     } else {
                         offer.setLink(
-                                scrapperMeta.getBasePath() + scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain())
+                                scrapperMeta.getBasePath() + scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                         );
                     }
                     break;
@@ -151,10 +160,10 @@ public abstract class Scrapper implements InitializingBean {
         return offer;
     }
 
-    private String getBrandName(Element element, List<ScrapperMeta.HtmlLocation> htmlLocationChain, String modelName) {
+    private String getBrandName(Element element, List<ScrapperMeta.HtmlLocation> htmlLocationChain, String modelName, String shopName) {
         String brandName = null;
         try {
-            brandName = scrapperService.getElementByChain(element, htmlLocationChain);
+            brandName = scrapperService.getElementByChain(element, htmlLocationChain, shopName);
 
         } catch (Exception e) {
             log.warn("Brand name for {}, cant be taken for the first try", modelName);
