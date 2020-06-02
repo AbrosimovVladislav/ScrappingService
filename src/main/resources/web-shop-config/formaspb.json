@@ -1,0 +1,282 @@
+{
+  "basePath": "https://forma-spb.ru",
+  "shopName": "FORMASPB",
+  "paginatorParam": "PAGEN_1=",
+  "menuItems": [
+    {
+      "url": "https://forma-spb.ru/catalog/konki_3/konki_khokkeynye/",
+      "typeId": 1
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/konki_3/roliki_khokkeynye/",
+      "typeId": 2
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/klyushki_2/klyushki_vratarya/",
+      "typeId": 14
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/klyushki_2/derevyannaya_klyushka/",
+      "typeId": 13
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/klyushki_2/kompozitnye/",
+      "typeId": 13
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/klyushki_2/truby_i_kryuki/",
+      "typeId": 16
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/vizory_i_maski/",
+      "typeId": 9
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/zashchita_zapyastya/",
+      "typeId": 12
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/zashchita_pakha/",
+      "typeId": 6
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/zashchita_shei_2/",
+      "typeId": 10
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/nagrudniki_2/",
+      "typeId": 3
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/nalokotniki_1/",
+      "typeId": 7
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/shlem_igroka/",
+      "typeId": 5
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/trusy_2/",
+      "typeId": 8
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/perchatki_1/",
+      "typeId": 11
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/shlem_igroka_s_maskoy/",
+      "typeId": 5
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/zashchita/shchitki_2/",
+      "typeId": 4
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/sumki_1/ryukzaki/",
+      "typeId": 32
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/sumki_1/sumki_bez_koles/",
+      "typeId": 31
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/sumki_1/sumki_vratarya/",
+      "typeId": 31
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/sumki_1/sumki_na_kolesakh/",
+      "typeId": 31
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/sumki_1/sumki_dlya_prinadlezhnostey/",
+      "typeId": 32
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/antifog_1/",
+      "typeId": 38
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/butylki_1/",
+      "typeId": 41
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/doska_trenera_1/",
+      "typeId": 46
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/lezviya_i_stakany_1/",
+      "typeId": 34
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/myachiki_1/",
+      "typeId": 44
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/lenta_1/",
+      "typeId": 40
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/podtyazhki_i_poyasa_1/",
+      "typeId": 42
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/chekhly_dlya_konkov/",
+      "typeId": 33
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/shayby_1/",
+      "typeId": 43
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/aksessuary_1/shnurki_1/",
+      "typeId": 36
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/vratar/akssesuary_dlya_vratarya/",
+      "typeId": 29
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/vratar/blin_i_lovushka_vratarya/",
+      "typeId": 25
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/vratar/konki_vratarskie/",
+      "typeId": 22
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/vratar/shlem_vratarya/",
+      "typeId": 24
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/vratar/trusy_vratarya/",
+      "typeId": 21
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/vratar/nagrudnik_vratarskiy/",
+      "typeId": 20
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/vratar/shchitki_vratarskie/",
+      "typeId": 23
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/trenazhery_khokkeynye/vorota_khokkeynye/",
+      "typeId": 45
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/odezhda/gamashi_i_reytuzy/",
+      "typeId": 17
+    },
+    {
+      "url": "https://forma-spb.ru/catalog/odezhda/svitera/",
+      "typeId": 18
+    }
+  ],
+  "rootElement": {
+    "name": "catalog_item item_wrap ",
+    "htmlObjectType": "class"
+  },
+  "elementChainList": [
+    {
+      "productField": "name",
+      "htmlLocationChain": [
+        {
+          "name": "item-title",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "span",
+          "htmlObjectType": "lasttag"
+        }
+      ]
+    },
+    {
+      "productField": "brand",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "price",
+      "htmlLocationChain": [
+        {
+          "name": "cost prices clearfix",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "price_value",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "inStore",
+      "htmlLocationChain": [
+        {
+          "name": "item-stock",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "value",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "shopName",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "category",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "type",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "age",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "link",
+      "htmlLocationChain": [
+        {
+          "name": "item-title",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "a",
+          "htmlObjectType": "tag"
+        },
+        {
+          "name": "href",
+          "htmlObjectType": "attr"
+        }
+      ]
+    }
+  ]
+}

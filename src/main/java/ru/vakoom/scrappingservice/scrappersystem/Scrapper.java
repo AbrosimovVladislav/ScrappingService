@@ -132,6 +132,8 @@ public abstract class Scrapper implements InitializingBean {
                                 scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                                         .equalsIgnoreCase("купить") ||
                                         scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
+                                                .equalsIgnoreCase("Есть в наличии") ||
+                                        scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                                                 .contains("InStock") ||
                                         scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                                                 .equalsIgnoreCase("Много") ||
