@@ -35,6 +35,7 @@ public abstract class Scrapper implements InitializingBean {
     @Autowired
     protected BrandRepository brandRepository;
 
+    protected Offer offer;
     protected ScrapperMeta scrapperMeta;
 
     public List<Offer> fullCatalog() {
@@ -107,6 +108,8 @@ public abstract class Scrapper implements InitializingBean {
 
         Elements products = scrapperService.getElementsByClass(productPageDoc.get(), scrapperMeta.getRootElement().getName());
         return products.stream().map(catalogItem -> createOfferFromMeta(catalogItem, scrapperMeta, type))
+                .peek(o -> offer = o)
+                .map(o -> postHandle())
                 .collect(Collectors.toList());
     }
 
@@ -211,7 +214,7 @@ public abstract class Scrapper implements InitializingBean {
         return Double.parseDouble(price);
     }
 
-    private Optional<Document> getDocByUrl(String url) {
+    protected Optional<Document> getDocByUrl(String url) {
         try {
             if (url.contains("forma")) {
                 return Optional.of(Jsoup.connect(url).userAgent("Mozilla").get());
@@ -221,5 +224,9 @@ public abstract class Scrapper implements InitializingBean {
             log.error("{} url: {}", e.getMessage(), url);
             return Optional.empty();
         }
+    }
+
+    protected Offer postHandle(){
+        return offer;
     }
 }

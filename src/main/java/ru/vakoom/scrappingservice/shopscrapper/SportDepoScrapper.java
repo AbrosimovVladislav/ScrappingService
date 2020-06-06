@@ -6,6 +6,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
+import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 
@@ -17,6 +18,23 @@ public class SportDepoScrapper extends Scrapper {
     @PostConstruct
     public void afterPropertiesSet() {
         scrapperMeta = ScrapperMeta.fromJson("web-shop-config/sprotdepo.json");
+    }
+
+    @Override
+    public Offer postHandle() {
+        Offer baseOffer = offer;
+        if (!offer.getInStore()) {
+            getDocByUrl(offer.getLink())
+                .ifPresent(doc -> {
+                    Elements elements = doc.getElementsByClass("inet_big");
+                    if (!elements.isEmpty()) {
+                        if (elements.get(0).text().toLowerCase().contains("добавить в корзину")) {
+                            baseOffer.setInStore(true);
+                        }
+                    }
+                });
+        }
+        return baseOffer;
     }
 
     @Override
