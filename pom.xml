@@ -20,6 +20,7 @@
         <project.source.buildEncoding>UTF-8</project.source.buildEncoding>
         <java.version>11</java.version>
         <postgres.version>42.2.6</postgres.version>
+        <swagger.version>2.9.2</swagger.version>
     </properties>
 
     <dependencies>
@@ -65,6 +66,16 @@
         </dependency>
 
         <!--        Other-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

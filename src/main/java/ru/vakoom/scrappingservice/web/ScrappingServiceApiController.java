@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class ScrappingServiceApiController {
+public class ScrappingServiceApiController implements ScrappingServiceApi {
 
     private final ScheduleScrapperRunner scheduler;
     private final BrandRefresher brandRefresher;
