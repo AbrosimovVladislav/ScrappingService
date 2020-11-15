@@ -1,6 +1,7 @@
 package ru.vakoom.scrappingservice.restclient;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -15,7 +16,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MatcherClient {
 
-    public static final String MATCHING_SERVICE_BASE_PATH = "http://localhost:8081";
+    @Value("${matcher-service-path}")
+    public String MATCHING_SERVICE_BASE_PATH;
     public static final String MATCHING_SERVICE_RECEIVE_OFFERS_PATH = "/receiveOffers";
 
     private final RestTemplate restTemplate = new RestTemplate();

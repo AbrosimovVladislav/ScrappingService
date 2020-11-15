@@ -1,6 +1,7 @@
 package ru.vakoom.scrappingservice.restclient;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -15,7 +16,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AggregatorClient {
 
-    public static final String MATCHING_SERVICE_BASE_PATH = "http://localhost:8082";
+    @Value("${aggregator-serivce-path}")
+    public String MATCHING_SERVICE_BASE_PATH;
     public static final String MATCHING_SERVICE_SEND_BRANDS_PATH = "/brands";
 
     private final RestTemplate restTemplate = new RestTemplate();

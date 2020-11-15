@@ -1,0 +1,2 @@
+matcher-service-path: http://161.35.203.227:8081
+aggregator-serivce-path: http://161.35.203.227:8082

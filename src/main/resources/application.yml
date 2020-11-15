@@ -1,8 +1,8 @@
 server:
   port: 8080
+
 spring:
-  banner:
-    location=banner.txt:
+  banner: location=banner.txt
   datasource:
     username: postgres
     password: root
@@ -10,6 +10,7 @@ spring:
     driver-class-name: org.postgresql.Driver
     initialization-mode: always
     separator: ;;
+
   jpa:
     #    show-sql: true
     database: postgresql
@@ -20,6 +21,10 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQL9Dialect
         jdbc.lob.non_contextual_creation: true
         format_sql: true
+
+matcher-service-path: http://localhost:8081
+aggregator-serivce-path: http://localhost:8082
+
 logging:
   file:
     name: scrapping-app.log
