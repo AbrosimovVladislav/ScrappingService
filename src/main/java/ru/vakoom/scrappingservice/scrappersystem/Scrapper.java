@@ -44,7 +44,7 @@ public abstract class Scrapper implements InitializingBean {
         ScrappingDateLog scrappingDateLog = new ScrappingDateLog();
         scrappingDateLog.setDateOfScrap(new Date());
         long start = System.currentTimeMillis();
-        List<Offer> offers = menuItemUrls.stream()
+        List<Offer> offers = menuItemUrls.parallelStream()
                 .map(this::category)
                 .peek(offerRepository::saveAll)
                 .flatMap(List::stream)

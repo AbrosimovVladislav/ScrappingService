@@ -12,7 +12,7 @@ import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 import javax.annotation.PostConstruct;
 
 @Slf4j
-@Service
+//@Service
 public class Hock51Scrapper extends Scrapper {
     @PostConstruct
     public void afterPropertiesSet() {

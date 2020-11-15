@@ -1,6 +1,7 @@
 package ru.vakoom.scrappingservice.scheduler;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class ScheduleScrapperRunner {
 
     private final List<Scrapper> scrappers;
@@ -27,7 +29,7 @@ public class ScheduleScrapperRunner {
     public ResponseEntity<List<Offer>> refreshOffers() {
         offerRepository.deleteAll();
         sequenceOfferRefresher.setHibernateSequenceCurrentValueToZero();
-        List<Offer> offersForMatcherService = scrappers.stream()
+        List<Offer> offersForMatcherService = scrappers.parallelStream()
                 .map(Scrapper::fullCatalog)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
@@ -35,3 +37,4 @@ public class ScheduleScrapperRunner {
     }
 
 }
+
