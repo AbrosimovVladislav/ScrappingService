@@ -13,7 +13,7 @@ import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 import javax.annotation.PostConstruct;
 
 @Slf4j
-@Service
+//@Service
 public class SportDepoScrapper extends Scrapper {
     @PostConstruct
     public void afterPropertiesSet() {

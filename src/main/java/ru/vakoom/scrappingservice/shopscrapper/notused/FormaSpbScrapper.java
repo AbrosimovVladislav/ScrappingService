@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.shopscrapper;
+package ru.vakoom.scrappingservice.shopscrapper.notused;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.internal.StringUtil;

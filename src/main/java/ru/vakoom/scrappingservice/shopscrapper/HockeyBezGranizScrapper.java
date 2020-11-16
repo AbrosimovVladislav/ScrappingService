@@ -9,7 +9,7 @@ import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 
 @Slf4j
-@Service
+//@Service
 public class HockeyBezGranizScrapper extends Scrapper {
 
     public void afterPropertiesSet() {

@@ -1,0 +1,114 @@
+{
+  "basePath": "https://www.nordhockey.ru",
+  "shopName": "NORDHOCKEY",
+  "paginatorParam": "p=",
+  "menuItems": [
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-konki",
+      "typeId": 1
+    }
+  ],
+  "rootElement": {
+    "name": "item type-1 quick-view-container",
+    "htmlObjectType": "class"
+  },
+  "elementChainList": [
+    {
+      "productField": "name",
+      "htmlLocationChain": [
+        {
+          "name": "product-name",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "a",
+          "htmlObjectType": "lasttag"
+        }
+      ]
+    },
+    {
+      "productField": "brand",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "price",
+      "htmlLocationChain": [
+        {
+          "name": "special-price",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "price",
+          "htmlObjectType": "lastclass"
+        }
+      ]
+    },
+    {
+      "productField": "inStore",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "shopName",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "category",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "type",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "age",
+      "htmlLocationChain": [
+        {
+          "name": "",
+          "htmlObjectType": ""
+        }
+      ]
+    },
+    {
+      "productField": "link",
+      "htmlLocationChain": [
+        {
+          "name": "product-name",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "a",
+          "htmlObjectType": "tag"
+        },
+        {
+          "name": "href",
+          "htmlObjectType": "attr"
+        }
+      ]
+    }
+  ]
+}

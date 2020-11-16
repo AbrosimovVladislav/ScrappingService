@@ -10,7 +10,7 @@ import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
 
 @Slf4j
-@Service
+//@Service
 public class KlushkiScrapper extends Scrapper {
 
     public void afterPropertiesSet() {
