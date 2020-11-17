@@ -1,10 +1,8 @@
 package ru.vakoom.scrappingservice.shopscrapper;
 
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.internal.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
 import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
@@ -19,7 +17,7 @@ public class NordHockeyScrapper extends Scrapper {
         try {
             String pages = fullCategoryDoc.getElementsByClass("toolbar clearfix").get(0).attr("data-last-page-num");
             return Integer.valueOf(pages);
-        } catch (Exception e){
+        } catch (Exception e) {
             log.warn("There is no possibility to get number of pages for some category of NORDHOCKEY");
             return 1;
         }

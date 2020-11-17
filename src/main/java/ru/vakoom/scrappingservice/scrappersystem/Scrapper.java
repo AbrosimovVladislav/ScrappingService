@@ -126,10 +126,7 @@ public abstract class Scrapper implements InitializingBean {
                     offer.setBrand(getBrandName(startElement, elementChain.getHtmlLocationChain(), offer.getName(), scrapperMeta.getShopName()));
                     break;
                 case "price":
-                    offer.setPrice(
-                            getPrice(startElement, elementChain, meta)
-//                            parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price"))
-                    );
+                    offer.setPrice(getPrice(startElement, elementChain, meta));
                     break;
                 case "inStore":
                     if (offer.getPrice() == 0D || offer.getPrice() == 0) {
@@ -173,7 +170,7 @@ public abstract class Scrapper implements InitializingBean {
         return offer;
     }
 
-    public Double getPrice(Element startElement, ScrapperMeta.ElementChain elementChain, ScrapperMeta meta){
+    public Double getPrice(Element startElement, ScrapperMeta.ElementChain elementChain, ScrapperMeta meta) {
         return parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price"));
     }
 
