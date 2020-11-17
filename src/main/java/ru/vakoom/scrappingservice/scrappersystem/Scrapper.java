@@ -92,7 +92,7 @@ public abstract class Scrapper implements InitializingBean {
     }
 
     private String addPaginationToUrl(String url, String paginator, Integer pageNumber) {
-        if(scrapperMeta.getShopName().equalsIgnoreCase("KLUSHKI")){
+        if (scrapperMeta.getShopName().equalsIgnoreCase("KLUSHKI")) {
             return url;
         }
         return url.contains("?") ? url + "&" + paginator + pageNumber : url + "?" + paginator + pageNumber;
@@ -127,7 +127,8 @@ public abstract class Scrapper implements InitializingBean {
                     break;
                 case "price":
                     offer.setPrice(
-                            parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price"))
+                            getPrice(startElement, elementChain, meta)
+//                            parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price"))
                     );
                     break;
                 case "inStore":
@@ -151,7 +152,9 @@ public abstract class Scrapper implements InitializingBean {
                     }
                     break;
                 case "link":
-                    if (scrapperMeta.getShopName().equalsIgnoreCase("HOCK5") || scrapperMeta.getShopName().equalsIgnoreCase("KLUSHKI")) {
+                    if (scrapperMeta.getShopName().equalsIgnoreCase("HOCK5")
+                            || scrapperMeta.getShopName().equalsIgnoreCase("KLUSHKI")
+                            || scrapperMeta.getShopName().equalsIgnoreCase("NORDHOCKEY")) {
                         offer.setLink(
                                 scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName())
                         );
@@ -168,6 +171,10 @@ public abstract class Scrapper implements InitializingBean {
         offer.setAge(getAgeFromOfferName(offer.getName()));
         log.info(offer.toString());
         return offer;
+    }
+
+    public Double getPrice(Element startElement, ScrapperMeta.ElementChain elementChain, ScrapperMeta meta){
+        return parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price"));
     }
 
     private String getBrandName(Element element, List<ScrapperMeta.HtmlLocation> htmlLocationChain, String modelName, String shopName) {
@@ -207,7 +214,7 @@ public abstract class Scrapper implements InitializingBean {
         return "";
     }
 
-    private Double parseDouble(String price) {
+    public Double parseDouble(String price) {
         String onlyDoubleRegex = "[^0-9]";
         price = price.replaceAll(onlyDoubleRegex, "");
         price = price.replace(",", ".");
@@ -226,7 +233,7 @@ public abstract class Scrapper implements InitializingBean {
         }
     }
 
-    protected Offer postHandle(){
+    protected Offer postHandle() {
         return offer;
     }
 }

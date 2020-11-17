@@ -2,6 +2,7 @@ package ru.vakoom.scrappingservice.scrappersystem;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
+import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 
@@ -35,7 +36,7 @@ public class ScrapperMeta {
      * Html элемент необходимый для сбора инфомрации о продукте
      */
     @Data
-    static class ElementChain {
+    public static class ElementChain {
 
         /**
          * Название свойства продукта
@@ -53,7 +54,8 @@ public class ScrapperMeta {
      * Html элемент с помощью которого мы добираемся до значения конкретного свойства продукта
      */
     @Data
-    static class HtmlLocation {
+    @Accessors(chain = true)
+    public static class HtmlLocation {
 
         /**
          * Навзание элемента

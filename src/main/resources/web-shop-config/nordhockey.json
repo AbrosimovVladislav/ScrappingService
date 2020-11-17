@@ -4,8 +4,128 @@
   "paginatorParam": "p=",
   "menuItems": [
     {
-      "url": "https://www.nordhockey.ru/hockeynye-konki",
+      "url": "https://www.nordhockey.ru/hockeynye-konki/shopby/for_type-polevoj_igrok",
       "typeId": 1
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-konki/shopby/for_type-vratar",
+      "typeId": 22
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-klyushki/shopby/for_type-vratar",
+      "typeId": 14
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-klyushki/shopby/for_type-polevoj_igrok",
+      "typeId": 13
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-nagrudniki/shopby/for_type-polevoj_igrok",
+      "typeId": 3
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-schitki-nakolenniki/shopby/for_type-polevoj_igrok",
+      "typeId": 4
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-shlemy",
+      "typeId": 5
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-shlemy-s-maskoy/shopby/for_type-polevoj_igrok",
+      "typeId": 5
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-nalokotniki",
+      "typeId": 7
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-trusy-shorty/shopby/for_type-polevoj_igrok",
+      "typeId": 8
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-perchatki",
+      "typeId": 11
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-maski-vizory",
+      "typeId": 9
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynaya-zaschita-dlya-shei/shopby/for_type-polevoj_igrok",
+      "typeId": 10
+    },
+    {
+      "url": "https://www.nordhockey.ru/rakoviny-dlya-zaschity-paha",
+      "typeId": 6
+    },
+    {
+      "url": "https://www.nordhockey.ru/gamashi-reytuzy-hockeynye",
+      "typeId": 17
+    },
+    {
+      "url": "https://www.nordhockey.ru/hatelnoe-belje-hockeynoe",
+      "typeId": 19
+    },
+    {
+      "url": "https://www.nordhockey.ru/lovushki-i-bliny-dlja-vratarja",
+      "typeId": 25
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynaya-zaschita-dlya-shei/shopby/for_type-vratar",
+      "typeId": 26
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-nagrudniki/shopby/for_type-vratar",
+      "typeId": 20
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-trusy-shorty/shopby/for_type-vratar",
+      "typeId": 21
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-shlemy-s-maskoy/shopby/for_type-vratar",
+      "typeId": 24
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-schitki-nakolenniki/shopby/for_type-vratar",
+      "typeId": 23
+    },
+    {
+      "url": "https://www.nordhockey.ru/trenirovochnye-mayki-hockeynye",
+      "typeId": 18
+    },
+    {
+      "url": "https://www.nordhockey.ru/kryuki-dlya-klyushki",
+      "typeId": 16
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-bauly-sumki",
+      "typeId": 31
+    },
+    {
+      "url": "https://www.nordhockey.ru/hockeynye-rukzaki",
+      "typeId": 31
+    },
+    {
+      "url": "https://www.nordhockey.ru/sumki-dlya-hockeynyh-prinadlezhnostey",
+      "typeId": 32
+    },
+    {
+      "url": "https://www.nordhockey.ru/butylki-dlya-pitya-hockeynye",
+      "typeId": 41
+    },
+    {
+      "url": "https://www.nordhockey.ru/lenta-dlya-klyushek",
+      "typeId": 40
+    },
+    {
+      "url": "https://www.nordhockey.ru/chehly-dlya-konkov",
+      "typeId": 33
+    },
+    {
+      "url": "https://www.nordhockey.ru/shnurki-dlya-konkov",
+      "typeId": 36
     }
   ],
   "rootElement": {
@@ -52,8 +172,12 @@
       "productField": "inStore",
       "htmlLocationChain": [
         {
-          "name": "",
-          "htmlObjectType": ""
+          "name": "btn btn-primary btn-cart",
+          "htmlObjectType": "class"
+        },
+        {
+          "name": "title",
+          "htmlObjectType": "attr"
         }
       ]
     },
