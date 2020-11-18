@@ -14,7 +14,7 @@ spring:
   boot:
     admin:
       client:
-        url: http://161.35.70.99:8085
+        url: http://localhost:8085
         instance:
           name: ScrappingService
   banner: location=banner.txt
