@@ -1,7 +1,20 @@
 server:
   port: 8080
 
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: '*'
+    endpoint:
+      health:
+        show-details: always
+
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8085
   banner: location=banner.txt
   datasource:
     username: postgres
