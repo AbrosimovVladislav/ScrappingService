@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.model.Brand;
 import ru.vakoom.scrappingservice.repository.BrandRepository;
-import ru.vakoom.scrappingservice.restclient.AggregatorClient;
+import ru.vakoom.scrappingservice.service.restclient.AggregatorClient;
 
 import java.util.Collections;
 import java.util.List;

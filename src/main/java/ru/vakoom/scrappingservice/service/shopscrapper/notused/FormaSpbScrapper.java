@@ -1,32 +1,27 @@
-package ru.vakoom.scrappingservice.shopscrapper;
+package ru.vakoom.scrappingservice.service.shopscrapper.notused;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.internal.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Service;
-import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
-import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
+import ru.vakoom.scrappingservice.service.scrappersystem.Scrapper;
+import ru.vakoom.scrappingservice.service.scrappersystem.ScrapperMeta;
 
 @Slf4j
-@Service
-public class KlushkiScrapper extends Scrapper {
+//@Service
+public class FormaSpbScrapper extends Scrapper {
 
     public void afterPropertiesSet() {
-        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/klushki.json");
+        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/formaspb.json");
     }
 
     @Override
     public Integer defineCountOfPages(Document fullCategoryDoc) {
-        if(scrapperMeta.getShopName().equalsIgnoreCase("KLUSHKI")){
-            return 1;
-        }
-
         if(!fullCategoryDoc.getElementsByClass("wrap_text_empty").isEmpty()){
             return 0;
         }
-        Elements paginationElements = fullCategoryDoc.getElementsByClass("nums");
+        Elements paginationElements = fullCategoryDoc.getElementsByClass("module-pagination");
         if (paginationElements.isEmpty()) {
             return 1;
         }

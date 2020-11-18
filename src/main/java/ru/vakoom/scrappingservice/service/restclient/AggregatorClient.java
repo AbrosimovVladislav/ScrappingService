@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.restclient;
+package ru.vakoom.scrappingservice.service.restclient;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,25 +8,25 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.vakoom.scrappingservice.model.Offer;
+import ru.vakoom.scrappingservice.model.Brand;
 
 import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class MatcherClient {
+public class AggregatorClient {
 
-    @Value("${matcher-service-path}")
+    @Value("${aggregator-serivce-path}")
     public String MATCHING_SERVICE_BASE_PATH;
-    public static final String MATCHING_SERVICE_RECEIVE_OFFERS_PATH = "/receiveOffers";
+    public static final String MATCHING_SERVICE_SEND_BRANDS_PATH = "/brands";
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public ResponseEntity<List<Offer>> sendOffers(List<Offer> offers) {
-        String url = MATCHING_SERVICE_BASE_PATH + MATCHING_SERVICE_RECEIVE_OFFERS_PATH;
+    public ResponseEntity<List<Brand>> receiveBrands() {
+        String url = MATCHING_SERVICE_BASE_PATH + MATCHING_SERVICE_SEND_BRANDS_PATH;
         return restTemplate.exchange(url,
-                HttpMethod.POST,
-                new HttpEntity<>(offers),
+                HttpMethod.GET,
+                HttpEntity.EMPTY,
                 new ParameterizedTypeReference<>() {
                 });
     }

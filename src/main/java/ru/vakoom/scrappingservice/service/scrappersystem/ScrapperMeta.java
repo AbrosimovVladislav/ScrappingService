@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.scrappersystem;
+package ru.vakoom.scrappingservice.service.scrappersystem;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
@@ -8,7 +8,6 @@ import org.springframework.core.io.ClassPathResource;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.nio.file.Paths;
 import java.util.List;
 
 @Data

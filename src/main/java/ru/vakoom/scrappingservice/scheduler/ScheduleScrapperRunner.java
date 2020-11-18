@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component;
 import ru.vakoom.scrappingservice.model.Offer;
 import ru.vakoom.scrappingservice.repository.OfferRepository;
 import ru.vakoom.scrappingservice.repository.SequenceOfferRefresher;
-import ru.vakoom.scrappingservice.restclient.MatcherClient;
-import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
+import ru.vakoom.scrappingservice.service.aspect.logging.MeasurePerformance;
+import ru.vakoom.scrappingservice.service.restclient.MatcherClient;
+import ru.vakoom.scrappingservice.service.scrappersystem.Scrapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +27,7 @@ public class ScheduleScrapperRunner {
 
     //@Scheduled(cron = "* */5 * * * ?") // every 5 minutes
     @Scheduled(cron = "0 0 */3 * * *") // every 3 hours
+    @MeasurePerformance
     public ResponseEntity<List<Offer>> refreshOffers() {
         offerRepository.deleteAll();
         sequenceOfferRefresher.setHibernateSequenceCurrentValueToZero();

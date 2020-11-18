@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.scrappersystem;
+package ru.vakoom.scrappingservice.service.scrappersystem;
 
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

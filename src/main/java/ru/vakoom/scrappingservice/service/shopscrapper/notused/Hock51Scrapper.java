@@ -1,20 +1,19 @@
-package ru.vakoom.scrappingservice.shopscrapper.notused;
+package ru.vakoom.scrappingservice.service.shopscrapper.notused;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Service;
-import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
-import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
+import ru.vakoom.scrappingservice.service.scrappersystem.Scrapper;
+import ru.vakoom.scrappingservice.service.scrappersystem.ScrapperMeta;
 
 import javax.annotation.PostConstruct;
 
 @Slf4j
 //@Service
-public class Hock52Scrapper extends Scrapper {
+public class Hock51Scrapper extends Scrapper {
     @PostConstruct
     public void afterPropertiesSet() {
-        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/hock5-2.json");
+        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/hock5-1.json");
     }
 
     @Override

@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.shopscrapper.notused;
+package ru.vakoom.scrappingservice.service.shopscrapper;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.internal.StringUtil;
@@ -6,15 +6,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
-import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
-import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
+import ru.vakoom.scrappingservice.service.scrappersystem.Scrapper;
+import ru.vakoom.scrappingservice.service.scrappersystem.ScrapperMeta;
 
 @Slf4j
-//@Service
-public class FormaSpbScrapper extends Scrapper {
+@Service
+public class AllHockeyScrapper extends Scrapper {
 
     public void afterPropertiesSet() {
-        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/formaspb.json");
+        scrapperMeta = ScrapperMeta.fromJson("web-shop-config/allhockey.json");
     }
 
     @Override
@@ -22,7 +22,7 @@ public class FormaSpbScrapper extends Scrapper {
         if(!fullCategoryDoc.getElementsByClass("wrap_text_empty").isEmpty()){
             return 0;
         }
-        Elements paginationElements = fullCategoryDoc.getElementsByClass("module-pagination");
+        Elements paginationElements = fullCategoryDoc.getElementsByClass("nums");
         if (paginationElements.isEmpty()) {
             return 1;
         }

@@ -1,12 +1,12 @@
-package ru.vakoom.scrappingservice.shopscrapper;
+package ru.vakoom.scrappingservice.service.shopscrapper;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
-import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
-import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
+import ru.vakoom.scrappingservice.service.scrappersystem.Scrapper;
+import ru.vakoom.scrappingservice.service.scrappersystem.ScrapperMeta;
 
 @Slf4j
 @Service

@@ -1,11 +1,11 @@
-package ru.vakoom.scrappingservice.shopscrapper;
+package ru.vakoom.scrappingservice.service.shopscrapper;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
-import ru.vakoom.scrappingservice.scrappersystem.Scrapper;
-import ru.vakoom.scrappingservice.scrappersystem.ScrapperMeta;
+import ru.vakoom.scrappingservice.service.scrappersystem.Scrapper;
+import ru.vakoom.scrappingservice.service.scrappersystem.ScrapperMeta;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class NordHockeyScrapper extends Scrapper {
     @Override
-    public Integer defineCountOfPages(Document fullCategoryDoc) {
+    protected Integer defineCountOfPages(Document fullCategoryDoc) {
         try {
             String pages = fullCategoryDoc.getElementsByClass("toolbar clearfix").get(0).attr("data-last-page-num");
             return Integer.valueOf(pages);
@@ -29,7 +29,7 @@ public class NordHockeyScrapper extends Scrapper {
     }
 
     @Override
-    public Double getPrice(Element startElement, ScrapperMeta.ElementChain elementChain, ScrapperMeta meta) {
+    protected Double getPrice(Element startElement, ScrapperMeta.ElementChain elementChain, ScrapperMeta meta) {
         try {
             String elementByChain = scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price");
             return parseDouble(elementByChain);

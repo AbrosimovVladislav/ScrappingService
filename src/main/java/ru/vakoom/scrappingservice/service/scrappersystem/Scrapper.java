@@ -1,4 +1,4 @@
-package ru.vakoom.scrappingservice.scrappersystem;
+package ru.vakoom.scrappingservice.service.scrappersystem;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
@@ -9,12 +9,12 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.vakoom.scrappingservice.model.Brand;
 import ru.vakoom.scrappingservice.model.Offer;
-import ru.vakoom.scrappingservice.model.ScrappingDateLog;
 import ru.vakoom.scrappingservice.model.Type;
 import ru.vakoom.scrappingservice.repository.BrandRepository;
 import ru.vakoom.scrappingservice.repository.OfferRepository;
 import ru.vakoom.scrappingservice.repository.ScrappingDateLogRepository;
 import ru.vakoom.scrappingservice.repository.TypeRepository;
+import ru.vakoom.scrappingservice.service.aspect.logging.MeasurePerformance;
 
 import java.io.IOException;
 import java.util.*;
@@ -38,22 +38,14 @@ public abstract class Scrapper implements InitializingBean {
     protected Offer offer;
     protected ScrapperMeta scrapperMeta;
 
+    @MeasurePerformance(isScrappingNeeded = true)
     public List<Offer> fullCatalog() {
         List<ScrapperMeta.MenuItem> menuItemUrls = new ArrayList<>(scrapperMeta.getMenuItems());
-        //ToDo подумать как убрать в аннотации
-        ScrappingDateLog scrappingDateLog = new ScrappingDateLog();
-        scrappingDateLog.setDateOfScrap(new Date());
-        long start = System.currentTimeMillis();
         List<Offer> offers = menuItemUrls.parallelStream()
                 .map(this::category)
                 .peek(offerRepository::saveAll)
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
-        long finish = System.currentTimeMillis();
-        scrappingDateLog.setTimeOfScrapping(finish - start);
-        scrappingDateLog.setShopName(scrapperMeta.getShopName());
-        scrappingDateLog.setCountOfRecords(offers.size());
-        scrappingDateLogRepository.save(scrappingDateLog);
         return offers;
     }
 
@@ -98,7 +90,7 @@ public abstract class Scrapper implements InitializingBean {
         return url.contains("?") ? url + "&" + paginator + pageNumber : url + "?" + paginator + pageNumber;
     }
 
-    public abstract Integer defineCountOfPages(Document fullCategoryDoc);
+    protected abstract Integer defineCountOfPages(Document fullCategoryDoc);
 
     private List<Offer> productsPage(String pageUrl, Type type) {
         Optional<Document> productPageDoc = getDocByUrl(pageUrl);
@@ -170,7 +162,7 @@ public abstract class Scrapper implements InitializingBean {
         return offer;
     }
 
-    public Double getPrice(Element startElement, ScrapperMeta.ElementChain elementChain, ScrapperMeta meta) {
+    protected Double getPrice(Element startElement, ScrapperMeta.ElementChain elementChain, ScrapperMeta meta) {
         return parseDouble(scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price"));
     }
 
