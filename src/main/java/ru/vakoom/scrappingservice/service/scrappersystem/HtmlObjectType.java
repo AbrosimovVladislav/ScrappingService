@@ -82,7 +82,6 @@ public enum HtmlObjectType {
         } else if (value.equalsIgnoreCase(FINDELEMENTBYATTRWITHVALUEANDGETATTR.toString())) {
             return FINDELEMENTBYATTRWITHVALUEANDGETATTR;
         } else {
-            log.warn("There is no HtmlObject type like: {}", value);
             return CLASS;
         }
     }

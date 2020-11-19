@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.vakoom.scrappingservice.model.Brand;
 import ru.vakoom.scrappingservice.repository.BrandRepository;
+import ru.vakoom.scrappingservice.service.aspect.logging.MeasurePerformance;
 import ru.vakoom.scrappingservice.service.restclient.AggregatorClient;
 
 import java.util.Collections;
@@ -17,6 +18,7 @@ public class BrandRefresher {
     private final AggregatorClient aggregatorClient;
     private final BrandRepository brandRepository;
 
+    @MeasurePerformance
     public List<Brand> refreshBrands() {
         return Optional.ofNullable(aggregatorClient.receiveBrands().getBody())
                 .map(brandRepository::saveAll)

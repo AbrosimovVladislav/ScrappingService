@@ -34,7 +34,6 @@ public class NordHockeyScrapper extends Scrapper {
             String elementByChain = scrapperService.getElementByChain(startElement, elementChain.getHtmlLocationChain(), meta.getShopName() + "price");
             return parseDouble(elementByChain);
         } catch (Exception e) {
-            log.warn("Price name for nordhockey shop, cant be taken for the first try");
             String elementByChain = scrapperService.getElementByChain(
                     startElement,
                     List.of(new ScrapperMeta.HtmlLocation().setName("regular-price").setHtmlObjectType("class"),

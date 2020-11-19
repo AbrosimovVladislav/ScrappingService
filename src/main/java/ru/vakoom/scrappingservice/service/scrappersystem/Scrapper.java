@@ -1,5 +1,6 @@
 package ru.vakoom.scrappingservice.service.scrappersystem;
 
+import io.micrometer.core.instrument.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -17,12 +18,18 @@ import ru.vakoom.scrappingservice.repository.TypeRepository;
 import ru.vakoom.scrappingservice.service.aspect.logging.MeasurePerformance;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Slf4j
 public abstract class Scrapper implements InitializingBean {
+
+    private static final String LOGGING_PATTERN_OFFERS_EXISTED = "Shop: {}. Category: {} {}. Pages: {}. Offers: {}.";
+    private static final String LOGGING_PATTERN_NO_OFFERS = "Shop: {}. Category: {} {}. Pages: {}. NO OFFERS";
 
     @Autowired
     protected ScrapperService scrapperService;
@@ -67,11 +74,9 @@ public abstract class Scrapper implements InitializingBean {
         }
 
         if (pages == 0) {
-            log.info("Category {} has {} pages. No offers here", type.getShowName(), pages);
+            log.warn(LOGGING_PATTERN_NO_OFFERS, scrapperMeta.getShopName(),type.getShowName(), menuItem.getUrl(), pages);
             return Collections.emptyList();
         }
-
-        log.info("Category {} has {} pages", type.getShowName(), pages);
 
         //Range takes form first page to last not inclusive. That is why using +1s
         List<Offer> offersToSend = IntStream.range(1, pages + 1)
@@ -79,7 +84,12 @@ public abstract class Scrapper implements InitializingBean {
                 .map(url -> productsPage(url, type))
                 .flatMap(List::stream)
                 .collect(Collectors.toList());
-        if (offersToSend.isEmpty()) log.error("This category {} has no offers inside", categoryDoc.get());
+        if (offersToSend.isEmpty()) {
+            log.warn(LOGGING_PATTERN_NO_OFFERS, scrapperMeta.getShopName(), type.getShowName(), menuItem.getUrl(), pages);
+        } else {
+            log.info(LOGGING_PATTERN_OFFERS_EXISTED, scrapperMeta.getShopName(), type.getShowName(), menuItem.getUrl(), pages, offersToSend.size());
+        }
+
         return offersToSend;
     }
 
@@ -158,7 +168,6 @@ public abstract class Scrapper implements InitializingBean {
         offer.setShopName(scrapperMeta.getShopName());
         offer.setType(type);
         offer.setAge(getAgeFromOfferName(offer.getName()));
-        log.info(offer.toString());
         return offer;
     }
 
@@ -170,11 +179,10 @@ public abstract class Scrapper implements InitializingBean {
         String brandName = null;
         try {
             brandName = scrapperService.getElementByChain(element, htmlLocationChain, shopName);
-
         } catch (Exception e) {
-            log.warn("Brand name for {}, cant be taken for the first try", modelName);
+//            log.warn("Brand name for {}, cant be taken for the first try", modelName);
         }
-        if (brandName == null || brandName.isBlank()) {
+        if (StringUtils.isEmpty(brandName)) {
             List<Brand> brands = brandRepository.findAll();
             brandName = brands.stream()
                     .filter(b -> modelName.toUpperCase().contains(b.getShortName().toUpperCase()))
