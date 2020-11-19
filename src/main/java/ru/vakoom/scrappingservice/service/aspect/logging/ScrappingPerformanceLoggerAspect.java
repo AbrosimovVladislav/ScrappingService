@@ -42,12 +42,14 @@ public class ScrappingPerformanceLoggerAspect {
         stopWatch.start();
         try {
             result = joinPoint.proceed();
-            List<Offer> offers = (List<Offer>) result;
-            if (!offers.isEmpty() && annotation.isScrappingNeeded()) {
-                scrappingDateLog = new ScrappingDateLog();
-                scrappingDateLog.setShopName(offers.get(0).getShopName());
-                scrappingDateLog.setCountOfRecords(offers.size());
-                scrappingDateLog.setDateOfScrap(new Date());
+            if (annotation.isScrappingNeeded()) {
+                List<Offer> offers = (List<Offer>) result;
+                if (!offers.isEmpty()) {
+                    scrappingDateLog = new ScrappingDateLog();
+                    scrappingDateLog.setShopName(offers.get(0).getShopName());
+                    scrappingDateLog.setCountOfRecords(offers.size());
+                    scrappingDateLog.setDateOfScrap(new Date());
+                }
             }
         } catch (Throwable e) {
             exception = (Exception) e;
