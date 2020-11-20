@@ -25,7 +25,6 @@ public class ScheduleScrapperRunner {
     private final SequenceOfferRefresher sequenceOfferRefresher;
     private final MatcherClient matcherClient;
 
-    //@Scheduled(cron = "* */5 * * * ?") // every 5 minutes
     @Scheduled(cron = "0 0 */3 * * *") // every 3 hours
     @MeasurePerformance
     public ResponseEntity<List<Offer>> refreshOffers() {
