@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import ru.vakoom.scrappingservice.model.Brand;
+import ru.vakoom.scrappingservice.service.aspect.logging.MeasurePerformance;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class AggregatorClient {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
+    @MeasurePerformance
     public ResponseEntity<List<Brand>> receiveBrands() {
         String url = MATCHING_SERVICE_BASE_PATH + MATCHING_SERVICE_SEND_BRANDS_PATH;
         return restTemplate.exchange(url,

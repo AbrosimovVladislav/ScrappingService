@@ -39,6 +39,7 @@ public class ScrappingPerformanceLoggerAspect {
         Exception exception = null;
         Object result;
 
+        log.info("Start method {}.{}()", className, methodName);
         stopWatch.start();
         try {
             result = joinPoint.proceed();
@@ -66,6 +67,7 @@ public class ScrappingPerformanceLoggerAspect {
                 log.error("Exception catches inside PerformanceLoggerAspect ({}.{}()) with message {}. Duration {}ms",
                         className, methodName, exception.getMessage(), stopWatch.getTotalTimeMillis());
             } else {
+                log.info("Call of {}.{}() was completed successfully", className, methodName);
                 log.info("Duration of call: {}.{}() - {}ms", className, methodName, stopWatch.getTotalTimeMillis());
             }
 
