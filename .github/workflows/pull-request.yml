@@ -3,6 +3,7 @@ name: develop
 on:
   pull_request:
     branches:
+      - develop
       - master
 
 jobs:
