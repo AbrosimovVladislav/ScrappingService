@@ -24,7 +24,9 @@ jobs:
           postgresql user: postgres
           postgresql password: root
       - name: Build with Maven
-        run: mvn -B package
+        run: |
+          export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          mvn -B package
       - name: Copy Jar via SSH
         uses: appleboy/scp-action@master
         with:
