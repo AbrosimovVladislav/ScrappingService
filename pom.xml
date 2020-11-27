@@ -86,6 +86,11 @@
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
+        <dependency>
+            <groupId>ru.vakoom.yourhockey</groupId>
+            <artifactId>perflog</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -126,4 +131,10 @@
             <url>https://maven.pkg.github.com/AbrosimovVladislav/ScrappingService</url>
         </repository>
     </distributionManagement>
+    <repositories>
+      <repository>
+         <id>github-perflog</id>
+         <url>https://maven.pkg.github.com/yourhockey/perflog</url>
+      </repository>
+   </repositories>
 </project>
