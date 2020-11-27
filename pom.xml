@@ -141,6 +141,12 @@
       <repository>
          <id>github-perflog</id>
          <url>https://maven.pkg.github.com/yourhockey/perflog</url>
+         <releases>
+            <enabled>true</enabled>
+         </releases>
+         <snapshots>
+            <enabled>true</enabled>
+         </snapshots>
       </repository>
    </repositories>
 </project>
