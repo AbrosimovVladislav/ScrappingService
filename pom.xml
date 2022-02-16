@@ -19,7 +19,7 @@
     <properties>
         <project.source.buildEncoding>UTF-8</project.source.buildEncoding>
         <java.version>11</java.version>
-        <postgres.version>42.2.6</postgres.version>
+        <postgres.version>42.3.3</postgres.version>
         <swagger.version>2.9.2</swagger.version>
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
     </properties>
